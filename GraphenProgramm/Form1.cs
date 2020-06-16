@@ -40,7 +40,7 @@ namespace GrafenProgramm
             labDurchmesser.Text = "-";
             labZusammen.Text = "-";
             labBruecken.Text = "-";
-
+            darkTheme();
            
 
         }
@@ -159,6 +159,17 @@ namespace GrafenProgramm
 
         private void label1_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void brightTheme()
+        {
+            
+
+        }
+        private void darkTheme()
+        {
+            openFile.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(50, 49, 48);
 
         }
 

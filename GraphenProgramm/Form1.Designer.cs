@@ -57,6 +57,7 @@
             // 
             // openFile
             // 
+            this.openFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.openFile.Location = new System.Drawing.Point(12, 9);
             this.openFile.Name = "openFile";
             this.openFile.Size = new System.Drawing.Size(421, 23);
@@ -67,6 +68,7 @@
             // 
             // distanzenBtn
             // 
+            this.distanzenBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.distanzenBtn.Location = new System.Drawing.Point(346, 48);
             this.distanzenBtn.Name = "distanzenBtn";
             this.distanzenBtn.Size = new System.Drawing.Size(87, 23);
@@ -77,6 +79,7 @@
             // 
             // exzentrizitaetBtn
             // 
+            this.exzentrizitaetBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.exzentrizitaetBtn.Location = new System.Drawing.Point(346, 87);
             this.exzentrizitaetBtn.Name = "exzentrizitaetBtn";
             this.exzentrizitaetBtn.Size = new System.Drawing.Size(87, 23);
@@ -87,6 +90,7 @@
             // 
             // komponentenBtn
             // 
+            this.komponentenBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.komponentenBtn.Location = new System.Drawing.Point(458, 87);
             this.komponentenBtn.Name = "komponentenBtn";
             this.komponentenBtn.Size = new System.Drawing.Size(87, 23);
@@ -97,6 +101,7 @@
             // 
             // artikulationenBtn
             // 
+            this.artikulationenBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.artikulationenBtn.Location = new System.Drawing.Point(234, 87);
             this.artikulationenBtn.Name = "artikulationenBtn";
             this.artikulationenBtn.Size = new System.Drawing.Size(87, 23);
@@ -154,6 +159,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.labBruecken);
             this.panel1.Controls.Add(this.Label6);
             this.panel1.Controls.Add(this.labZentrum);
@@ -225,6 +231,7 @@
             // 
             // Graphen
             // 
+            this.Graphen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Graphen.Location = new System.Drawing.Point(234, 48);
             this.Graphen.Name = "Graphen";
             this.Graphen.Size = new System.Drawing.Size(87, 23);
@@ -235,6 +242,7 @@
             // 
             // wegBtn
             // 
+            this.wegBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.wegBtn.Location = new System.Drawing.Point(458, 48);
             this.wegBtn.Name = "wegBtn";
             this.wegBtn.Size = new System.Drawing.Size(87, 23);
@@ -253,6 +261,7 @@
             // 
             // button1
             // 
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Location = new System.Drawing.Point(458, 9);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(39, 23);
@@ -262,6 +271,7 @@
             // 
             // button2
             // 
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Location = new System.Drawing.Point(503, 9);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(42, 23);
