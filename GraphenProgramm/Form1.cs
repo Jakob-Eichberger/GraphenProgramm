@@ -34,12 +34,12 @@ namespace GrafenProgramm
         public Form1()
         {
             InitializeComponent();
-            
-            if (Convert.ToBoolean(Settings.Default["theme"]))
+
+            if (Settings.Default["theme"].ToString()==1.ToString())
             {
                 darkTheme();
             }
-            else
+            else 
             {
                 brightTheme();
             }
@@ -49,8 +49,6 @@ namespace GrafenProgramm
             labDurchmesser.Text = "-";
             labZusammen.Text = "-";
             labBruecken.Text = "-";
-
-
 
         }
 
@@ -241,6 +239,9 @@ namespace GrafenProgramm
             this.openFile.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.openFile.ForeColor = System.Drawing.SystemColors.ControlText;
 
+            this.labTheme.BackColor = System.Drawing.SystemColors.Control;
+            this.labTheme.ForeColor = System.Drawing.SystemColors.ControlText;
+
 
         }
         private void darkTheme()
@@ -317,18 +318,23 @@ namespace GrafenProgramm
             this.openFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.openFile.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(212)))), ((int)(((byte)(212)))));
 
+            this.labTheme.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.labTheme.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(212)))), ((int)(((byte)(212)))));
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             darkTheme();
-            Settings.Default["theme"] = true;
+            Settings.Default["theme"] = 1.ToString();
+            Settings.Default.Save();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             brightTheme();
-            Settings.Default["theme"] = false;
+            Settings.Default["theme"] = 0.ToString();
+            Settings.Default.Save();
         }
     }
 }

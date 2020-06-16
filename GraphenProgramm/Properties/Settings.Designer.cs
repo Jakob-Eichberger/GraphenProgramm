@@ -25,10 +25,10 @@ namespace GrafenProgramm.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool theme {
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public string theme {
             get {
-                return ((bool)(this["theme"]));
+                return ((string)(this["theme"]));
             }
             set {
                 this["theme"] = value;
