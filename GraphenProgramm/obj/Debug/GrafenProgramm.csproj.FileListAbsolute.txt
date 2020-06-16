@@ -8,3 +8,13 @@ C:\Users\jakob\Documents\GitHub\BergerProgramm\BergerProgramm\obj\Debug\GrafenPr
 C:\Users\jakob\Documents\GitHub\BergerProgramm\BergerProgramm\obj\Debug\GrafenProgramm.Properties.Resources.resources
 C:\Users\jakob\Documents\GitHub\BergerProgramm\BergerProgramm\obj\Debug\GrafenProgramm.exe
 C:\Users\jakob\Documents\GitHub\BergerProgramm\BergerProgramm\obj\Debug\GrafenProgramm.pdb
+C:\Users\jakob\source\repos\GraphenProgramm\GraphenProgramm\GraphenProgramm\bin\Debug\GrafenProgramm.exe.config
+C:\Users\jakob\source\repos\GraphenProgramm\GraphenProgramm\GraphenProgramm\bin\Debug\GrafenProgramm.exe
+C:\Users\jakob\source\repos\GraphenProgramm\GraphenProgramm\GraphenProgramm\bin\Debug\GrafenProgramm.pdb
+C:\Users\jakob\source\repos\GraphenProgramm\GraphenProgramm\GraphenProgramm\obj\Debug\GrafenProgramm.csprojAssemblyReference.cache
+C:\Users\jakob\source\repos\GraphenProgramm\GraphenProgramm\GraphenProgramm\obj\Debug\GrafenProgramm.Form1.resources
+C:\Users\jakob\source\repos\GraphenProgramm\GraphenProgramm\GraphenProgramm\obj\Debug\GrafenProgramm.Properties.Resources.resources
+C:\Users\jakob\source\repos\GraphenProgramm\GraphenProgramm\GraphenProgramm\obj\Debug\GrafenProgramm.csproj.GenerateResource.cache
+C:\Users\jakob\source\repos\GraphenProgramm\GraphenProgramm\GraphenProgramm\obj\Debug\GrafenProgramm.csproj.CoreCompileInputs.cache
+C:\Users\jakob\source\repos\GraphenProgramm\GraphenProgramm\GraphenProgramm\obj\Debug\GrafenProgramm.exe
+C:\Users\jakob\source\repos\GraphenProgramm\GraphenProgramm\GraphenProgramm\obj\Debug\GrafenProgramm.pdb

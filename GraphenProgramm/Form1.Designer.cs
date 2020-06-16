@@ -49,6 +49,8 @@
             this.Graphen = new System.Windows.Forms.Button();
             this.wegBtn = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -57,7 +59,7 @@
             // 
             this.openFile.Location = new System.Drawing.Point(12, 9);
             this.openFile.Name = "openFile";
-            this.openFile.Size = new System.Drawing.Size(533, 23);
+            this.openFile.Size = new System.Drawing.Size(421, 23);
             this.openFile.TabIndex = 0;
             this.openFile.Text = "OpenFile";
             this.openFile.UseVisualStyleBackColor = true;
@@ -249,11 +251,31 @@
             this.panel2.Size = new System.Drawing.Size(530, 374);
             this.panel2.TabIndex = 18;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(458, 9);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(39, 23);
+            this.button1.TabIndex = 11;
+            this.button1.Text = " ";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(503, 9);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(42, 23);
+            this.button2.TabIndex = 19;
+            this.button2.Text = " ";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(557, 534);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.wegBtn);
             this.Controls.Add(this.Graphen);
@@ -297,6 +319,8 @@
         private System.Windows.Forms.Label labBruecken;
         private System.Windows.Forms.Label Label6;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }
 
