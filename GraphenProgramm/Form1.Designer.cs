@@ -244,9 +244,9 @@
             // panel2
             // 
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Location = new System.Drawing.Point(15, 133);
+            this.panel2.Location = new System.Drawing.Point(15, 148);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(530, 389);
+            this.panel2.Size = new System.Drawing.Size(530, 374);
             this.panel2.TabIndex = 18;
             // 
             // Form1
