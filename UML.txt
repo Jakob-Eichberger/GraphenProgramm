@@ -1,0 +1,25 @@
+Klasse:
+• MatrixClass
+	Methoden:
+		•MatrixClass -Constructor
+		•Matrix - Propertie
+		•AmmountNode
+		•SetMatrix
+		•ReadCSV
+		•CheckIfCsvFileIsOk
+		•CopieMatrix
+		•Show
+		•Multiply
+		•Distanz
+		•Exzentrizität
+		•Radius
+		•Durchmesser
+		•Zentrum
+		•Artikulationen
+		•Bruecken
+		•Komponenten
+
+•Form1: (Main)
+	Methoden: 
+		•CalcDistanzForAlleKnotne
+		•CalcExzentrizitätForAllKnoten

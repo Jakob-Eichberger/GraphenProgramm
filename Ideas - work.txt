@@ -1,0 +1,13 @@
+WEGMATRIX: ausgangs -> ändern mit A2  ... da wo am anfag 0 den wert auf 1 settzen .... so lange bis sich nichts mehr ändert. 
+
+
+Artiklation
+Artikulation nur wenn zusamenhängend?
+Distanzmatrix für zusammenhängend
+
+
+
+Brücken
+in wegmatrix knotenwert der jetzt 1 ist auf 0 setzen -> komponenten -> wenn sich komponten verändert haben ein blockgefunden -> counter++
+
+

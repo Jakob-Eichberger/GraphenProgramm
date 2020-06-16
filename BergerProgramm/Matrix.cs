@@ -1,0 +1,553 @@
+﻿/*
+ToDo: 
+Matrix Multiplikation                           <-  implemented           QA ok
+Bestimmung der Distanzen aller Knoten           2D <-  implemented    QA ok
+Bestimmung der  Exzentrizitaet aller Knoten     2D<-  implemented     QA ok   info: Die Exzentrizitäten können aus den Zeilen der Matrix ermittelt werden
+Radius,                                         2d<-  implemented     QA ok    
+Durchmesser,                                    2d<-  implemented     QA ok    
+Zentrum                                         <-  implemented       QA ok          
+Artikulationen,                                 <-  pending 
+Bruecken                                        <-  implemented     QA failed -> sollte die Kanten returnen
+Komponenten                                     <-  implemented     QA ok
+WegMatrix                                       <-  implemented     QA ok
+*/
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.IO;
+using System.Collections;
+using System.CodeDom;
+using System.CodeDom.Compiler;
+
+namespace GrafenProgramm
+{
+    public class MatrixClass
+    {
+
+        public int[,] matrix;
+        int ammountNode = 0;
+        public Boolean zusammenhaengend;
+        public Boolean readOk = false;
+
+        public MatrixClass()
+        {
+        }
+
+        //used to get the full matrix;
+        public int[,] Matrix
+        {
+            get { return matrix; }
+        }
+
+        public Boolean ReadOk
+        {
+            get { return readOk; }
+        }
+
+        public int AmmountNode
+        {
+            get { return ammountNode; }
+        }
+
+        public Boolean ZusammenHaengend
+        {
+            get { return zusammenhaengend; }
+        }
+
+        //get file path
+        public string FileSelector()
+        {
+            OpenFileDialog OpenFileDialog1 = new OpenFileDialog()
+            {
+                FileName = "Select a csv file",
+                Filter = "csv files (*.csv)|*.csv",
+                Title = "Get csv file."
+            };
+            string inputFile = "";
+
+            if (OpenFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+
+                    var filePath = OpenFileDialog1.FileName;
+
+                    using (StreamReader sr = new StreamReader(filePath))
+                    {
+                        inputFile = sr.ReadToEnd();
+                    }
+                    readOk = true;
+
+                }
+
+                catch (System.UnauthorizedAccessException)
+                {
+                    MessageBox.Show($"Acces to path '{OpenFileDialog1.FileName.ToString()}' was denied!");
+
+                    readOk = false;
+                }
+                catch (System.IO.IOException)
+                {
+                    MessageBox.Show($"'The process cannot access the file '{OpenFileDialog1.FileName.ToString()}' because it is being used by another process.");
+
+                    readOk = false;
+                }
+
+            }
+
+            return inputFile;
+        }
+
+
+        //reads csv file  checks content for ammount of nodes - puts content into a string - calls checkifCsvFileIsOk Function
+        public bool ReadCSV()
+        {
+
+
+            //reinitiates matrix and ammounNode with null/0 
+            matrix = null;
+            ammountNode = 0;
+
+            String csvInput = FileSelector();
+
+
+            if (checkIfCsvFileIsOk(csvInput))
+            {
+                //Figure out how many nodes there are
+                for (int i = 0; i < csvInput.IndexOf("\r\n"); i++)
+                    ammountNode = csvInput[i].ToString() != "," ? ammountNode + 1 : ammountNode;
+                //initialize Array
+                matrix = new int[ammountNode, ammountNode];
+
+                try
+                {
+                    //copy csv from csvInput into the matrix;
+                    int y = 0;
+                    int x = 0;
+                    for (int i = 0; i < csvInput.Length; i++, x++)
+                    {
+                        if (x == ammountNode)
+                        {
+                            y++;
+                            x = 0;
+                        }
+                        if (csvInput[i] == '0' || csvInput[i] == '1')
+                        {
+                            matrix[y, x] = Convert.ToInt32(csvInput[i]) - 48;
+                        }
+                        else
+                        {
+                            x--;
+                        }
+                    }
+                    Zusammenhaengend(matrix);
+                }
+
+                catch (IndexOutOfRangeException)
+                {
+                    MessageBox.Show($"Index out of Bound exception while trying to copie csvInput into Matrix! -> {DateTime.Now.ToString()} - This Application will now end");
+
+                    Application.Exit();
+                }
+                return true;
+            }
+            return false;
+        }
+
+        //Checks if there are any unallowed characters in the inputfile
+        private bool checkIfCsvFileIsOk(string input)
+        {
+            try
+            {
+                for (int i = 0; i < input.Length; i++)
+                {
+                    if (input[i] == '0' || input[i] == '1' || input[i] == ',' || input[i] == '\r' || input[i] == '\n')
+                    {
+                        //current char is ok   
+                        readOk = true;
+                    }
+                    else
+                    {
+                        //current char is not allowed -> exception is thrown
+                        readOk = false;
+                        throw new Exception($"Character '{input[i]}' at index {i} is not allowed. Please fix the csv file and try again!");
+                    }
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            return false;
+        }
+
+        //it works -> dont touch it
+        private int[,] CopieMatrix(int[,] a)
+        {
+            int[,] b = new int[ammountNode, ammountNode];
+            int y = 0;
+            int x = 0;
+            for (int i = 0; i < a.Length; i++, x++)
+            {
+                if (x == ammountNode)
+                {
+                    y++;
+                    x = 0;
+                }
+                if (y == ammountNode)
+                    i = a.Length;
+                b[y, x] = a[y, x];
+            }
+            return b;
+        }
+
+        //multiplies on matrix with another
+        public int[,] Multiply(int[,] a, int[,] b)
+        {
+            int[,] prod = new int[ammountNode, ammountNode];
+            int x = 0;
+            int y = 0;
+            for (int i = 0; i < a.Length; i++, x++)
+            {
+                if (x == ammountNode)
+                {
+                    y++;
+                    x = 0;
+                }
+                if (y == ammountNode)
+                    i = a.Length;
+                int[] arrayY = new int[ammountNode];
+                int[] arrayX = new int[ammountNode];
+                for (int ii = 0; ii < ammountNode; ii++)
+                {
+                    arrayY[ii] = a[ii, x];
+                    arrayX[ii] = b[y, ii];
+                }
+                int value = 0;
+                for (int ii = 0; ii < ammountNode; ii++)
+                {
+                    value += arrayY[ii] * arrayX[ii];
+                }
+                prod[y, x] = value;
+            }
+            return prod;
+        }
+
+        //input is a matrix - output is a string
+        public string Show(int[,] b)
+        {
+            try
+            {
+                if (b != null)
+                {
+                    String c = "";
+                    int y = 0;
+                    int x = 0;
+                    for (int i = 0; i < b.Length; i++, x++)
+                    {
+                        if (x == ammountNode)
+                        {
+                            y++;
+                            x = 0;
+                            c += "\n";
+                        }
+                        if (y == ammountNode)
+                            i = b.Length;
+                        if (b[y, x] >= 0)
+                        {
+                            c += $"  {b[y, x]}  ";
+                        }
+                        else
+                        {
+                            c += $" {b[y, x]}  ";
+                        }
+                    }
+                    return c;
+                }
+                else
+                {
+
+                }
+            }
+            catch (IndexOutOfRangeException)
+            {
+                MessageBox.Show("error");
+            }
+            catch (NullReferenceException)
+            {
+                MessageBox.Show("error");
+            }
+            return null;
+
+        }
+        //if value x is found true is returned - Function does not check diagonal lines for x 
+        public Boolean checkForValueNoneDiagonal(int[,] b, int checkValue)
+        {
+            Boolean valueFound = false;
+            try
+            {
+                int y = 0;
+                int x = 0;
+                for (int i = 0; i < b.Length; i++, x++)
+                {
+                    if (x == ammountNode)
+                    {
+                        y++;
+                        x = 0;
+                    }
+                    if (y == ammountNode)
+                        i = b.Length;
+                    if (x != y && b[y, x] == checkValue)
+                        valueFound = true;
+                }
+            }
+            catch (IndexOutOfRangeException)
+            {
+                MessageBox.Show("Array is not same as default");
+            }
+            return valueFound;
+        }
+
+        //replace a Value that is not on the diagonal line
+        public int[,] replaceValueNoneDiagonal(int[,] cur, int isValue, int shouldValue)
+        {
+            int y = 0;
+            int x = 0;
+            for (int i = 0; i < cur.Length; i++, x++)
+            {
+                if (x == ammountNode)
+                {
+                    y++;
+                    x = 0;
+                }
+                if (y == ammountNode)
+                    i = cur.Length;
+                if (x != y && cur[y, x] == isValue)
+                {
+                    cur[y, x] = shouldValue;
+                }
+            }
+            return cur;
+        }
+
+        //function shows all distanzes from every vertex to every other vertex - returns int[,]
+        public int[,] Distanz(int[,] givenmatrix)
+        {
+            int[,] dMatrix = CopieMatrix(givenmatrix);
+            int[,] multiMatrix = CopieMatrix(givenmatrix);
+            dMatrix = replaceValueNoneDiagonal(dMatrix, 0, -1);
+            for (int b = 2; b < dMatrix.Length; b++)
+            {
+                multiMatrix = Multiply(multiMatrix, givenmatrix);
+                int y = 0;
+                int x = 0;
+                for (int i = 0; i < dMatrix.Length; i++, x++)
+                {
+                    if (x == ammountNode)
+                    {
+                        y++;
+                        x = 0;
+                    }
+                    if (y == ammountNode)
+                        i = dMatrix.Length;
+                    if (dMatrix[y, x] == -1 && multiMatrix[y, x] != 0)
+                    {
+                        dMatrix[y, x] = b;
+                    }
+                }
+            }
+            return dMatrix;
+        }
+
+        //liefert 1d array zurück in der länge von ammountNode ... und jeder Eintrag ist == zu jeder y Koordinate
+        public int[] exzentrizitaeten()
+        {
+            int[,] dMatrix = Distanz(matrix);
+            int[] eMatrix = new int[ammountNode];
+            int highestValue = 0;
+
+            for (int y = 0; y < ammountNode; y++)
+            {
+                highestValue = 0;
+                for (int x = 0; x < ammountNode; x++)
+                {
+                    if (dMatrix[y, x] >= highestValue)
+                    {
+                        highestValue = dMatrix[y, x];
+                    }
+                }
+                eMatrix[y] = highestValue;
+            }
+            return eMatrix;
+        }
+
+        //returns int - radius -  -1 wird returned wenn der graphen nicht zsammenhängend ist.
+        public int radius()
+        {
+            try
+            {
+                if (!zusammenhaengend)
+                {
+                    return -1;
+                }
+                int[] exz = exzentrizitaeten();
+                int radius = exz.Min();
+                return radius;
+            }
+            catch (InvalidOperationException)
+            {
+                return -1;
+            }
+        }
+
+        //returns int - durchmesser - -1 wird returned wenn der graphen nicht zsammenhängend ist.
+        public int durchmesser()
+        {
+            try
+            {
+                if (!zusammenhaengend)
+                {
+                    return -1;
+                }
+                int[] exz = exzentrizitaeten();
+                int durchmesser = exz.Max();
+                return durchmesser;
+            }
+            catch (InvalidOperationException)
+            {
+                return -1;
+            }
+        }
+
+        // returns arraylist - zählt 0 nicht mit :: Knoten "n-1" - null wird returned wenn der graphen nicht zsammenhängend ist.
+        public string zentrum()
+        {
+            try
+            {
+                if (!zusammenhaengend)
+                {
+                    return null;
+                }
+                string str = "{";
+                int zRadius = radius();
+                int[] exz = exzentrizitaeten();
+
+                for (int i = 0; i < exz.Length; i++)
+                {
+                    if (exz[i] == zRadius)
+                        str += $"{i + 1}, ";
+                }
+                StringBuilder sb = new StringBuilder(str);
+                sb[str.Length - 2] = '}';
+                return sb.ToString();
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                return null;
+            }
+        }
+
+        //bekommt distanzmatrix übergeben
+        public void Zusammenhaengend(int[,] distanzmatrix)
+        {
+            int[,] i = Distanz(distanzmatrix);
+            if (checkForValueNoneDiagonal(i, -1))
+            {
+                zusammenhaengend = false;
+            }
+            else
+            {
+                zusammenhaengend = true;
+            }
+        }
+
+        //!Todo: matrix als argument für brücken
+        public int[,] WegMatrix(int[,] inputmatrix)
+        {
+            Boolean aendern = true;
+            int[,] AD = CopieMatrix(inputmatrix);
+            int[,] ADx = AD;
+            for (int i = 0; i < ammountNode; i++)
+            {
+                AD[i, i] = 1;
+            }
+            while (aendern)
+            {
+                aendern = false;
+                ADx = Multiply(inputmatrix, ADx);
+                for (int x = 0; x < ammountNode; x++)
+                {
+                    for (int y = 0; y < ammountNode; y++)
+                    {
+                        if (AD[y, x] == 0 && ADx[y, x] != 0)
+                        {
+                            aendern = true;
+                            AD[y, x] = 1;
+                        }
+                    }
+                }
+            }
+            return AD;
+        }
+
+        //bekomt wegmatrix übergeben
+        public ArrayList Komponenten(int[,] wegmatrix)
+        {
+            ArrayList komponents = new ArrayList();//pro eintrag eine komponente .. eintrag enthält index+1 als string
+            ArrayList schongesucht = new ArrayList(); // füge int(index) als knoten hinzu wenn dieser bereits durchsucht wurde
+            int y = 0;
+            for (int x = 0; x < ammountNode; x++)
+            {
+                string kompo = "";
+                if (!schongesucht.Contains(x))
+                {
+                    for (y = 0; y < ammountNode; y++)
+                    {
+                        if (wegmatrix[y, x] == 1)
+                        {
+                            kompo += $"{y + 1}, ";
+                            schongesucht.Add(y);
+                        }
+                    }
+                    komponents.Add(kompo);
+                }
+            }
+            return komponents;
+        }
+
+        //bekommt normale matrix -> in matrix werden felder geändert -> dann wegmatrix -> dann komponente
+        public int brucken(int[,] bru_matrix)
+        {
+            ArrayList komp = Komponenten(WegMatrix(bru_matrix));
+
+            int anzahlbrucken = 0;
+            ArrayList bruecken = new ArrayList();
+            for (int x = 0; x < ammountNode - 1; x++)
+            {
+                for (int y = x + 1; y < ammountNode; y++)
+                {
+                    if (bru_matrix[y, x] == 1)
+                    {
+                        bru_matrix[y, x] = 0;
+                        bru_matrix[x, y] = 0;
+                        ArrayList komptemp = Komponenten(WegMatrix(bru_matrix));
+                        if (komptemp.Count > komp.Count)
+                        {
+                            anzahlbrucken++;
+                        }
+                        bru_matrix[y, x] = 1;
+                        bru_matrix[x, y] = 1;
+                    }
+                }
+            }
+            return anzahlbrucken;
+        }
+    }
+}
