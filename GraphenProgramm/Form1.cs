@@ -35,11 +35,11 @@ namespace GrafenProgramm
         {
             InitializeComponent();
 
-            if (Settings.Default["theme"].ToString()==1.ToString())
+            if (Settings.Default["theme"].ToString() == 1.ToString())
             {
                 darkTheme();
             }
-            else 
+            else
             {
                 brightTheme();
             }
@@ -65,7 +65,10 @@ namespace GrafenProgramm
                 radius = matrix.radius();
                 durchmesser = matrix.durchmesser();
                 zentrum = matrix.zentrum();
-                labBruecken.Text = matrix.brucken(matrix.Matrix).ToString();
+
+                ArrayList x = new ArrayList();
+                x = matrix.brucken(matrix.Matrix);
+                labBruecken.Text = x.Count.ToString();
 
 
 
@@ -99,7 +102,7 @@ namespace GrafenProgramm
 
         private void komponentenBtn_Click(object sender, EventArgs e)
         {
-            ArrayList x = matrix.Komponenten(matrix.WegMatrix(matrix.Matrix));
+            ArrayList x = matrix.komponenten(matrix.WegMatrix(matrix.Matrix));
 
             string m = "";
             for (int i = 0; i < x.Count; i++)
@@ -110,25 +113,15 @@ namespace GrafenProgramm
             // MessageBox.Show(x.Count.ToString());
         }
 
-
-
-        private void brueckenBtn_Click(object sender, EventArgs e)
-        {
-            /* ArrayList x = matrix.brucken(matrix.Matrix);
-             string temp="";
-            foreach(string i in x)
-             {
-                 temp += i + "";
-             }
-             */
-
-            int temp = matrix.brucken(matrix.Matrix);
-            MessageBox.Show(temp.ToString());
-        }
-
         private void artikulationenBtn_Click(object sender, EventArgs e)
         {
-
+            ArrayList art = matrix.artikulation(matrix.Matrix);
+            string i = "";
+            foreach(string n in art)
+            {
+                i += " " + n;
+            }
+            label1.Text = i;
         }
 
 
@@ -242,6 +235,10 @@ namespace GrafenProgramm
             this.labTheme.BackColor = System.Drawing.SystemColors.Control;
             this.labTheme.ForeColor = System.Drawing.SystemColors.ControlText;
 
+            this.bruckenBtn.BackColor = System.Drawing.SystemColors.Control;
+            this.bruckenBtn.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.bruckenBtn.ForeColor = System.Drawing.SystemColors.ControlText;
+
 
         }
         private void darkTheme()
@@ -321,6 +318,10 @@ namespace GrafenProgramm
             this.labTheme.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.labTheme.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(212)))), ((int)(((byte)(212)))));
 
+            this.bruckenBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(48)))));
+            this.bruckenBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bruckenBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(212)))), ((int)(((byte)(212)))));
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -335,6 +336,25 @@ namespace GrafenProgramm
             brightTheme();
             Settings.Default["theme"] = 0.ToString();
             Settings.Default.Save();
+        }
+
+        private void bruckenBtn_Click(object sender, EventArgs e)
+        {
+            ArrayList x = matrix.brucken(matrix.Matrix);
+            string n = "";
+            if (x.Count != 0)
+            {
+                foreach (string i in x)
+                {
+                    n += i;
+                }
+            }
+            else
+            {
+                n = "Keine Brücken vorhanden!";
+            }
+            label1.Text = n;
+
         }
     }
 }

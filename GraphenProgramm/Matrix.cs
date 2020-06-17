@@ -7,7 +7,7 @@ Radius,                                         2d<-  implemented     QA ok
 Durchmesser,                                    2d<-  implemented     QA ok    
 Zentrum                                         <-  implemented       QA ok          
 Artikulationen,                                 <-  pending 
-Bruecken                                        <-  implemented     QA failed -> sollte die Kanten returnen
+Bruecken                                        <-  implemented     QA ok
 Komponenten                                     <-  implemented     QA ok
 WegMatrix                                       <-  implemented     QA ok
 */
@@ -75,9 +75,7 @@ namespace GrafenProgramm
             {
                 try
                 {
-
                     var filePath = OpenFileDialog1.FileName;
-
                     using (StreamReader sr = new StreamReader(filePath))
                     {
                         inputFile = sr.ReadToEnd();
@@ -455,16 +453,18 @@ namespace GrafenProgramm
         }
 
         //bekommt distanzmatrix übergeben
-        public void Zusammenhaengend(int[,] distanzmatrix)
+        public Boolean Zusammenhaengend(int[,] distanzmatrix)
         {
             int[,] i = Distanz(distanzmatrix);
             if (checkForValueNoneDiagonal(i, -1))
             {
                 zusammenhaengend = false;
+                return false;
             }
             else
             {
                 zusammenhaengend = true;
+                return true;
             }
         }
 
@@ -498,7 +498,7 @@ namespace GrafenProgramm
         }
 
         //bekomt wegmatrix übergeben
-        public ArrayList Komponenten(int[,] wegmatrix)
+        public ArrayList komponenten(int[,] wegmatrix)
         {
             ArrayList komponents = new ArrayList();//pro eintrag eine komponente .. eintrag enthält index+1 als string
             ArrayList schongesucht = new ArrayList(); // füge int(index) als knoten hinzu wenn dieser bereits durchsucht wurde
@@ -523,11 +523,9 @@ namespace GrafenProgramm
         }
 
         //bekommt normale matrix -> in matrix werden felder geändert -> dann wegmatrix -> dann komponente
-        public int brucken(int[,] bru_matrix)
+        public ArrayList brucken(int[,] bru_matrix)
         {
-            ArrayList komp = Komponenten(WegMatrix(bru_matrix));
-
-            int anzahlbrucken = 0;
+            ArrayList komp = komponenten(WegMatrix(bru_matrix));
             ArrayList bruecken = new ArrayList();
             for (int x = 0; x < ammountNode - 1; x++)
             {
@@ -537,17 +535,63 @@ namespace GrafenProgramm
                     {
                         bru_matrix[y, x] = 0;
                         bru_matrix[x, y] = 0;
-                        ArrayList komptemp = Komponenten(WegMatrix(bru_matrix));
+                        ArrayList komptemp = komponenten(WegMatrix(bru_matrix));
                         if (komptemp.Count > komp.Count)
                         {
-                            anzahlbrucken++;
+                            bruecken.Add($"{{{x + 1},{y + 1}}}");
                         }
                         bru_matrix[y, x] = 1;
                         bru_matrix[x, y] = 1;
                     }
                 }
             }
-            return anzahlbrucken;
+            return bruecken;
+        }
+
+        //bekommt AD übergeben
+        public ArrayList artikulation(int[,] art_matrix)
+        {
+            ArrayList artiku = new ArrayList();
+            ArrayList komp = komponenten(WegMatrix(art_matrix));
+            int kompanz = komp.Count;
+
+            int[,] temparray = art_matrix;
+            for (int x = 0; x < ammountNode; x++)
+            {
+                temparray = art_matrix;
+                int temp = 0;
+                for (int y = x; y < ammountNode; y++)
+                {
+                    //zähle alle Kanten bro x
+                    if (art_matrix[y, x] == 1||y==x)
+                    {
+                        temp++;
+                    }
+                }
+                //Artikulationen haben niemals den Grad 0 oder 1
+
+                if (temp > 2)
+                {
+                    for (int o = x;o<ammountNode;o++)
+                    {
+                        temparray[o,x] = 0;
+                        temparray[x,o] = 0;
+                    }
+
+                    MessageBox.Show(Show(temparray));
+
+                    if (!Zusammenhaengend(Distanz(temparray)))
+                    {
+                        ArrayList i = komponenten(WegMatrix(temparray));
+                        if (i.Count>kompanz)
+                        {
+                            artiku.Add($"{x+1}");
+                        }
+                    }
+                }
+            }
+
+            return artiku;
         }
     }
 }

@@ -40,7 +40,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.labBruecken = new System.Windows.Forms.Label();
-            this.Label6 = new System.Windows.Forms.Label();
             this.labZentrum = new System.Windows.Forms.Label();
             this.labZusammen = new System.Windows.Forms.Label();
             this.labRadius = new System.Windows.Forms.Label();
@@ -48,14 +47,14 @@
             this.Graphen = new System.Windows.Forms.Button();
             this.wegBtn = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.openFile = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.labTheme = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.bruckenBtn = new System.Windows.Forms.Button();
+            this.Label6 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // distanzenBtn
@@ -65,7 +64,7 @@
             this.distanzenBtn.ForeColor = System.Drawing.SystemColors.ControlText;
             this.distanzenBtn.Location = new System.Drawing.Point(346, 48);
             this.distanzenBtn.Name = "distanzenBtn";
-            this.distanzenBtn.Size = new System.Drawing.Size(87, 23);
+            this.distanzenBtn.Size = new System.Drawing.Size(87, 27);
             this.distanzenBtn.TabIndex = 3;
             this.distanzenBtn.TabStop = false;
             this.distanzenBtn.Text = "Distanzen";
@@ -79,7 +78,7 @@
             this.exzentrizitaetBtn.ForeColor = System.Drawing.SystemColors.ControlText;
             this.exzentrizitaetBtn.Location = new System.Drawing.Point(346, 87);
             this.exzentrizitaetBtn.Name = "exzentrizitaetBtn";
-            this.exzentrizitaetBtn.Size = new System.Drawing.Size(87, 23);
+            this.exzentrizitaetBtn.Size = new System.Drawing.Size(87, 27);
             this.exzentrizitaetBtn.TabIndex = 3;
             this.exzentrizitaetBtn.TabStop = false;
             this.exzentrizitaetBtn.Text = "Exzentrizitaet";
@@ -91,9 +90,9 @@
             this.komponentenBtn.BackColor = System.Drawing.SystemColors.Control;
             this.komponentenBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.komponentenBtn.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.komponentenBtn.Location = new System.Drawing.Point(458, 87);
+            this.komponentenBtn.Location = new System.Drawing.Point(457, 87);
             this.komponentenBtn.Name = "komponentenBtn";
-            this.komponentenBtn.Size = new System.Drawing.Size(87, 23);
+            this.komponentenBtn.Size = new System.Drawing.Size(88, 27);
             this.komponentenBtn.TabIndex = 9;
             this.komponentenBtn.TabStop = false;
             this.komponentenBtn.Text = "Komponenten";
@@ -107,7 +106,7 @@
             this.artikulationenBtn.ForeColor = System.Drawing.SystemColors.ControlText;
             this.artikulationenBtn.Location = new System.Drawing.Point(234, 87);
             this.artikulationenBtn.Name = "artikulationenBtn";
-            this.artikulationenBtn.Size = new System.Drawing.Size(87, 23);
+            this.artikulationenBtn.Size = new System.Drawing.Size(87, 27);
             this.artikulationenBtn.TabIndex = 7;
             this.artikulationenBtn.TabStop = false;
             this.artikulationenBtn.Text = "Artikulationen";
@@ -201,17 +200,6 @@
             this.labBruecken.TabIndex = 20;
             this.labBruecken.Text = "labBrucken";
             // 
-            // Label6
-            // 
-            this.Label6.AutoSize = true;
-            this.Label6.BackColor = System.Drawing.SystemColors.Control;
-            this.Label6.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Label6.Location = new System.Drawing.Point(3, 57);
-            this.Label6.Name = "Label6";
-            this.Label6.Size = new System.Drawing.Size(68, 13);
-            this.Label6.TabIndex = 19;
-            this.Label6.Text = "AnzBrücken:";
-            // 
             // labZentrum
             // 
             this.labZentrum.AutoSize = true;
@@ -261,9 +249,9 @@
             this.Graphen.BackColor = System.Drawing.SystemColors.Control;
             this.Graphen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Graphen.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Graphen.Location = new System.Drawing.Point(234, 48);
+            this.Graphen.Location = new System.Drawing.Point(346, 8);
             this.Graphen.Name = "Graphen";
-            this.Graphen.Size = new System.Drawing.Size(87, 23);
+            this.Graphen.Size = new System.Drawing.Size(87, 27);
             this.Graphen.TabIndex = 2;
             this.Graphen.TabStop = false;
             this.Graphen.Text = "Graphen";
@@ -275,9 +263,9 @@
             this.wegBtn.BackColor = System.Drawing.SystemColors.Control;
             this.wegBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.wegBtn.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.wegBtn.Location = new System.Drawing.Point(458, 48);
+            this.wegBtn.Location = new System.Drawing.Point(234, 48);
             this.wegBtn.Name = "wegBtn";
-            this.wegBtn.Size = new System.Drawing.Size(87, 23);
+            this.wegBtn.Size = new System.Drawing.Size(87, 27);
             this.wegBtn.TabIndex = 4;
             this.wegBtn.TabStop = false;
             this.wegBtn.Text = "Weg";
@@ -294,26 +282,26 @@
             this.panel2.Size = new System.Drawing.Size(530, 374);
             this.panel2.TabIndex = 18;
             // 
-            // button1
+            // openFile
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(48)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button1.Location = new System.Drawing.Point(1, 16);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(39, 10);
-            this.button1.TabIndex = 11;
-            this.button1.TabStop = false;
-            this.button1.Text = " ";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.openFile.BackColor = System.Drawing.SystemColors.Control;
+            this.openFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.openFile.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.openFile.Location = new System.Drawing.Point(21, 8);
+            this.openFile.Name = "openFile";
+            this.openFile.Size = new System.Drawing.Size(300, 27);
+            this.openFile.TabIndex = 1;
+            this.openFile.TabStop = false;
+            this.openFile.Text = "Open File";
+            this.openFile.UseVisualStyleBackColor = false;
+            this.openFile.Click += new System.EventHandler(this.openFile_Click);
             // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.SystemColors.Control;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button2.Location = new System.Drawing.Point(46, 16);
+            this.button2.Location = new System.Drawing.Point(503, 25);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(42, 10);
             this.button2.TabIndex = 19;
@@ -322,38 +310,51 @@
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // openFile
+            // button1
             // 
-            this.openFile.BackColor = System.Drawing.SystemColors.Control;
-            this.openFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.openFile.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.openFile.Location = new System.Drawing.Point(21, 9);
-            this.openFile.Name = "openFile";
-            this.openFile.Size = new System.Drawing.Size(412, 23);
-            this.openFile.TabIndex = 1;
-            this.openFile.TabStop = false;
-            this.openFile.Text = "Open File";
-            this.openFile.UseVisualStyleBackColor = false;
-            this.openFile.Click += new System.EventHandler(this.openFile_Click);
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(48)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.button1.Location = new System.Drawing.Point(458, 24);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(39, 10);
+            this.button1.TabIndex = 11;
+            this.button1.TabStop = false;
+            this.button1.Text = " ";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // labTheme
             // 
             this.labTheme.AutoSize = true;
-            this.labTheme.Location = new System.Drawing.Point(0, 0);
+            this.labTheme.Location = new System.Drawing.Point(454, 8);
             this.labTheme.Name = "labTheme";
             this.labTheme.Size = new System.Drawing.Size(43, 13);
             this.labTheme.TabIndex = 20;
             this.labTheme.Text = "Theme:";
             // 
-            // panel3
+            // bruckenBtn
             // 
-            this.panel3.Controls.Add(this.labTheme);
-            this.panel3.Controls.Add(this.button1);
-            this.panel3.Controls.Add(this.button2);
-            this.panel3.Location = new System.Drawing.Point(457, 9);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(88, 33);
-            this.panel3.TabIndex = 11;
+            this.bruckenBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bruckenBtn.Location = new System.Drawing.Point(457, 46);
+            this.bruckenBtn.Name = "bruckenBtn";
+            this.bruckenBtn.Size = new System.Drawing.Size(87, 27);
+            this.bruckenBtn.TabIndex = 21;
+            this.bruckenBtn.TabStop = false;
+            this.bruckenBtn.Text = "Brücken";
+            this.bruckenBtn.UseVisualStyleBackColor = true;
+            this.bruckenBtn.Click += new System.EventHandler(this.bruckenBtn_Click);
+            // 
+            // Label6
+            // 
+            this.Label6.AutoSize = true;
+            this.Label6.BackColor = System.Drawing.SystemColors.Control;
+            this.Label6.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.Label6.Location = new System.Drawing.Point(3, 57);
+            this.Label6.Name = "Label6";
+            this.Label6.Size = new System.Drawing.Size(68, 13);
+            this.Label6.TabIndex = 19;
+            this.Label6.Text = "AnzBrücken:";
             // 
             // Form1
             // 
@@ -361,7 +362,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(557, 534);
-            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.bruckenBtn);
+            this.Controls.Add(this.labTheme);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.openFile);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.wegBtn);
@@ -379,9 +383,8 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -403,13 +406,13 @@
         private System.Windows.Forms.Button Graphen;
         private System.Windows.Forms.Button wegBtn;
         private System.Windows.Forms.Label labBruecken;
-        private System.Windows.Forms.Label Label6;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button openFile;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label labTheme;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Button bruckenBtn;
+        private System.Windows.Forms.Label Label6;
     }
 }
 
