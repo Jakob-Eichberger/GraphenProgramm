@@ -128,7 +128,7 @@ namespace GrafenProgramm
 
         private void exzentrizitaetBtn_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show(matrix.Zusammenhaengend(matrix.Matrix).ToString());
         }
 
         private void distanzenBtn_Click(object sender, EventArgs e)

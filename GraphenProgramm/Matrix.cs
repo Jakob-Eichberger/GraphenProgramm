@@ -452,10 +452,10 @@ namespace GrafenProgramm
             }
         }
 
-        //bekommt distanzmatrix übergeben
-        public Boolean Zusammenhaengend(int[,] distanzmatrix)
+        //bekommt AD übergeben
+        public Boolean Zusammenhaengend(int[,] AD)
         {
-            int[,] i = Distanz(distanzmatrix);
+            int[,] i = Distanz(AD);
             if (checkForValueNoneDiagonal(i, -1))
             {
                 zusammenhaengend = false;
@@ -578,13 +578,14 @@ namespace GrafenProgramm
                         temporary[x, n] = 0;
                         temporary[n, x] = 0;
                     }
-                    MessageBox.Show("bevore\n" + Show(temporary));
-                    if (!Zusammenhaengend(Distanz(temporary)))
+                    Boolean zus = Zusammenhaengend(temporary);
+                    if (!zus)
                     {
                         ArrayList i = komponenten(WegMatrix(temporary));
                         if (i.Count>kompanz)
                         {
                             artiku.Add($"{x+1}");
+                            MessageBox.Show($"{x+1}");
                         }
                     }
                 }
