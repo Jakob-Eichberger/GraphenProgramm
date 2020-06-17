@@ -539,7 +539,7 @@ namespace GrafenProgramm
                         ArrayList komptemp = komponenten(WegMatrix(bru_matrix));
                         if (komptemp.Count > komp.Count)
                         {
-                            bruecken.Add($"{{{x + 1},{y + 1}}}");
+                            bruecken.Add($"[{x + 1},{y + 1}] ");
                         }
                         bru_matrix[y, x] = 1;
                         bru_matrix[x, y] = 1;
@@ -579,11 +579,11 @@ namespace GrafenProgramm
                         temporary[x, n] = 0;
                         temporary[n, x] = 0;
                     }
-                   
                     Boolean zus = Zusammenhaengend(temporary,x);
                     if (zus)
                     {
                         ArrayList i = komponenten(WegMatrix(temporary));
+                        //i.Count-1 da wenn ich einen Knoten "lösche" er als eigene Kompoenten erkannt wirt
                         if ((i.Count-1) > kompanz)
                         {
                             artiku.Add($"{x + 1}");
@@ -591,7 +591,6 @@ namespace GrafenProgramm
                     }
                 }
             }
-
             return artiku;
         }
     }
