@@ -48,7 +48,11 @@ namespace GrafenProgramm
             labZentrum.Text = "-";
             labDurchmesser.Text = "-";
             labZusammen.Text = "-";
-            labBruecken.Text = "-";
+
+            labKompo.Text = "-";
+            labArtik.Text = "-";
+            labBruck.Text = "-";
+
 
         }
 
@@ -66,9 +70,7 @@ namespace GrafenProgramm
                 durchmesser = matrix.durchmesser();
                 zentrum = matrix.zentrum();
 
-                ArrayList x = new ArrayList();
-                x = matrix.brucken(matrix.Matrix);
-                labBruecken.Text = x.Count.ToString();
+
 
 
 
@@ -89,6 +91,49 @@ namespace GrafenProgramm
                     labDurchmesser.Text = durchmesser.ToString();
                 }
 
+                //Brücken am Label anzeigen
+                ArrayList temp = matrix.brucken(matrix.Matrix);
+                string n = "";
+                if (temp.Count != 0)
+                {
+                    foreach (string i in temp)
+                    {
+                        n += i;
+                    }
+                }
+                else
+                {
+                    n = "Keine Brücken vorhanden!";
+                }
+                labBruck.Text = n;
+
+                //Komponenten am Label anzeigen
+                ArrayList x = matrix.komponenten(matrix.WegMatrix(matrix.Matrix));
+
+                string m = "";
+                for (int i = 0; i < x.Count; i++)
+                {
+                    m += $"{{{x[i]}}} ";
+                }
+                labKompo.Text = m;
+
+                //Artikulationen am Label anzeigen
+                ArrayList art = matrix.artikulation(matrix.Matrix);
+                string oo = "";
+                if (art.Count != 0)
+                {
+                    foreach (string ll in art)
+                    {
+                        oo += $" V{ll}";
+                    }
+                }
+                else
+                {
+                    oo = "-";
+                }
+                labArtik.Text = oo;
+
+
             }
             else if (matrix.Matrix == null)
             {
@@ -102,33 +147,20 @@ namespace GrafenProgramm
 
         private void komponentenBtn_Click(object sender, EventArgs e)
         {
-            ArrayList x = matrix.komponenten(matrix.WegMatrix(matrix.Matrix));
 
-            string m = "";
-            for (int i = 0; i < x.Count; i++)
-            {
-                m += $"{x[i]}\n";
-            }
-            label1.Text = m;
             // MessageBox.Show(x.Count.ToString());
         }
 
         private void artikulationenBtn_Click(object sender, EventArgs e)
         {
-            ArrayList art = matrix.artikulation(matrix.Matrix);
-            string i = "Folgende(r) Knoten ist/sind artikulationen: ";
-            foreach(string n in art)
-            {
-                i += " " + n;
-            }
-            label1.Text = i;
+
         }
 
 
 
         private void exzentrizitaetBtn_Click(object sender, EventArgs e)
         {
-           // MessageBox.Show(matrix.Zusammenhaengend(matrix.Matrix).ToString());
+          
         }
 
         private void distanzenBtn_Click(object sender, EventArgs e)
@@ -165,17 +197,6 @@ namespace GrafenProgramm
             this.distanzenBtn.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.distanzenBtn.ForeColor = System.Drawing.SystemColors.ControlText;
 
-            this.exzentrizitaetBtn.BackColor = System.Drawing.SystemColors.Control;
-            this.exzentrizitaetBtn.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.exzentrizitaetBtn.ForeColor = System.Drawing.SystemColors.ControlText;
-
-            this.komponentenBtn.BackColor = System.Drawing.SystemColors.Control;
-            this.komponentenBtn.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.komponentenBtn.ForeColor = System.Drawing.SystemColors.ControlText;
-
-            this.artikulationenBtn.BackColor = System.Drawing.SystemColors.Control;
-            this.artikulationenBtn.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.artikulationenBtn.ForeColor = System.Drawing.SystemColors.ControlText;
 
             this.label1.BackColor = System.Drawing.SystemColors.Control;
             this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -194,12 +215,6 @@ namespace GrafenProgramm
 
             this.panel1.BackColor = System.Drawing.SystemColors.Control;
             this.panel1.ForeColor = System.Drawing.SystemColors.ControlText;
-
-            this.labBruecken.BackColor = System.Drawing.SystemColors.Control;
-            this.labBruecken.ForeColor = System.Drawing.SystemColors.ControlText;
-
-            this.Label6.BackColor = System.Drawing.SystemColors.Control;
-            this.Label6.ForeColor = System.Drawing.SystemColors.ControlText;
 
             this.labZentrum.BackColor = System.Drawing.SystemColors.Control;
             this.labZentrum.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -235,9 +250,25 @@ namespace GrafenProgramm
             this.labTheme.BackColor = System.Drawing.SystemColors.Control;
             this.labTheme.ForeColor = System.Drawing.SystemColors.ControlText;
 
-            this.bruckenBtn.BackColor = System.Drawing.SystemColors.Control;
-            this.bruckenBtn.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.bruckenBtn.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label7.BackColor = System.Drawing.SystemColors.Control;
+            this.label7.ForeColor = System.Drawing.SystemColors.ControlText;
+
+            this.label8.BackColor = System.Drawing.SystemColors.Control;
+            this.label8.ForeColor = System.Drawing.SystemColors.ControlText;
+
+            this.label9.BackColor = System.Drawing.SystemColors.Control;
+            this.label9.ForeColor = System.Drawing.SystemColors.ControlText;
+
+            this.labKompo.BackColor = System.Drawing.SystemColors.Control;
+            this.labKompo.ForeColor = System.Drawing.SystemColors.ControlText;
+
+            this.labArtik.BackColor = System.Drawing.SystemColors.Control;
+            this.labArtik.ForeColor = System.Drawing.SystemColors.ControlText;
+
+            this.labBruck.BackColor = System.Drawing.SystemColors.Control;
+            this.labBruck.ForeColor = System.Drawing.SystemColors.ControlText;
+
+            this.panel3.BackColor = System.Drawing.SystemColors.Control;
 
 
         }
@@ -246,18 +277,6 @@ namespace GrafenProgramm
             this.distanzenBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(48)))));
             this.distanzenBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.distanzenBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(212)))), ((int)(((byte)(212)))));
-
-            this.exzentrizitaetBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(48)))));
-            this.exzentrizitaetBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.exzentrizitaetBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(212)))), ((int)(((byte)(212)))));
-
-            this.komponentenBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(48)))));
-            this.komponentenBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.komponentenBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(212)))), ((int)(((byte)(212)))));
-
-            this.artikulationenBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(48)))));
-            this.artikulationenBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.artikulationenBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(212)))), ((int)(((byte)(212)))));
 
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(48)))));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(212)))), ((int)(((byte)(212)))));
@@ -276,12 +295,6 @@ namespace GrafenProgramm
 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(48)))));
             this.panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(48)))));
-
-            this.labBruecken.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(48)))));
-            this.labBruecken.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(212)))), ((int)(((byte)(212)))));
-
-            this.Label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(48)))));
-            this.Label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(212)))), ((int)(((byte)(212)))));
 
             this.labZentrum.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(48)))));
             this.labZentrum.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(212)))), ((int)(((byte)(212)))));
@@ -318,9 +331,26 @@ namespace GrafenProgramm
             this.labTheme.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.labTheme.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(212)))), ((int)(((byte)(212)))));
 
-            this.bruckenBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(48)))));
-            this.bruckenBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bruckenBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(212)))), ((int)(((byte)(212)))));
+            this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(48)))));
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(212)))), ((int)(((byte)(212)))));
+
+            this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(48)))));
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(212)))), ((int)(((byte)(212)))));
+
+            this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(48)))));
+            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(212)))), ((int)(((byte)(212)))));
+
+            this.labKompo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(48)))));
+            this.labKompo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(212)))), ((int)(((byte)(212)))));
+
+            this.labArtik.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(48)))));
+            this.labArtik.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(212)))), ((int)(((byte)(212)))));
+
+            this.labBruck.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(48)))));
+            this.labBruck.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(212)))), ((int)(((byte)(212)))));
+
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(48)))));
+            this.panel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(48)))));
 
         }
 
@@ -338,22 +368,8 @@ namespace GrafenProgramm
             Settings.Default.Save();
         }
 
-        private void bruckenBtn_Click(object sender, EventArgs e)
+        private void label8_Click(object sender, EventArgs e)
         {
-            ArrayList x = matrix.brucken(matrix.Matrix);
-            string n = "";
-            if (x.Count != 0)
-            {
-                foreach (string i in x)
-                {
-                    n += i;
-                }
-            }
-            else
-            {
-                n = "Keine Brücken vorhanden!";
-            }
-            label1.Text = n;
 
         }
     }

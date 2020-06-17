@@ -30,17 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.distanzenBtn = new System.Windows.Forms.Button();
-            this.exzentrizitaetBtn = new System.Windows.Forms.Button();
-            this.komponentenBtn = new System.Windows.Forms.Button();
-            this.artikulationenBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.labBruecken = new System.Windows.Forms.Label();
-            this.Label6 = new System.Windows.Forms.Label();
             this.labZentrum = new System.Windows.Forms.Label();
             this.labZusammen = new System.Windows.Forms.Label();
             this.labRadius = new System.Windows.Forms.Label();
@@ -52,9 +47,16 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.labTheme = new System.Windows.Forms.Label();
-            this.bruckenBtn = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.labKompo = new System.Windows.Forms.Label();
+            this.labArtik = new System.Windows.Forms.Label();
+            this.labBruck = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // distanzenBtn
@@ -62,7 +64,7 @@
             this.distanzenBtn.BackColor = System.Drawing.SystemColors.Control;
             this.distanzenBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.distanzenBtn.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.distanzenBtn.Location = new System.Drawing.Point(346, 48);
+            this.distanzenBtn.Location = new System.Drawing.Point(456, 55);
             this.distanzenBtn.Name = "distanzenBtn";
             this.distanzenBtn.Size = new System.Drawing.Size(87, 27);
             this.distanzenBtn.TabIndex = 3;
@@ -71,54 +73,12 @@
             this.distanzenBtn.UseVisualStyleBackColor = false;
             this.distanzenBtn.Click += new System.EventHandler(this.distanzenBtn_Click);
             // 
-            // exzentrizitaetBtn
-            // 
-            this.exzentrizitaetBtn.BackColor = System.Drawing.SystemColors.Control;
-            this.exzentrizitaetBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.exzentrizitaetBtn.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.exzentrizitaetBtn.Location = new System.Drawing.Point(346, 87);
-            this.exzentrizitaetBtn.Name = "exzentrizitaetBtn";
-            this.exzentrizitaetBtn.Size = new System.Drawing.Size(87, 27);
-            this.exzentrizitaetBtn.TabIndex = 3;
-            this.exzentrizitaetBtn.TabStop = false;
-            this.exzentrizitaetBtn.Text = "Exzentrizitaet";
-            this.exzentrizitaetBtn.UseVisualStyleBackColor = false;
-            this.exzentrizitaetBtn.Click += new System.EventHandler(this.exzentrizitaetBtn_Click);
-            // 
-            // komponentenBtn
-            // 
-            this.komponentenBtn.BackColor = System.Drawing.SystemColors.Control;
-            this.komponentenBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.komponentenBtn.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.komponentenBtn.Location = new System.Drawing.Point(457, 87);
-            this.komponentenBtn.Name = "komponentenBtn";
-            this.komponentenBtn.Size = new System.Drawing.Size(88, 27);
-            this.komponentenBtn.TabIndex = 9;
-            this.komponentenBtn.TabStop = false;
-            this.komponentenBtn.Text = "Komponenten";
-            this.komponentenBtn.UseVisualStyleBackColor = false;
-            this.komponentenBtn.Click += new System.EventHandler(this.komponentenBtn_Click);
-            // 
-            // artikulationenBtn
-            // 
-            this.artikulationenBtn.BackColor = System.Drawing.SystemColors.Control;
-            this.artikulationenBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.artikulationenBtn.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.artikulationenBtn.Location = new System.Drawing.Point(234, 87);
-            this.artikulationenBtn.Name = "artikulationenBtn";
-            this.artikulationenBtn.Size = new System.Drawing.Size(87, 27);
-            this.artikulationenBtn.TabIndex = 7;
-            this.artikulationenBtn.TabStop = false;
-            this.artikulationenBtn.Text = "Artikulationen";
-            this.artikulationenBtn.UseVisualStyleBackColor = false;
-            this.artikulationenBtn.Click += new System.EventHandler(this.artikulationenBtn_Click);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.Control;
             this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Location = new System.Drawing.Point(4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(34, 13);
             this.label1.TabIndex = 10;
@@ -143,9 +103,9 @@
             this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label3.Location = new System.Drawing.Point(3, 18);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(40, 13);
+            this.label3.Size = new System.Drawing.Size(43, 13);
             this.label3.TabIndex = 12;
-            this.label3.Text = "Radius";
+            this.label3.Text = "Radius:";
             // 
             // label4
             // 
@@ -154,9 +114,9 @@
             this.label4.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label4.Location = new System.Drawing.Point(3, 31);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(69, 13);
+            this.label4.Size = new System.Drawing.Size(72, 13);
             this.label4.TabIndex = 13;
-            this.label4.Text = "Durchmesser";
+            this.label4.Text = "Durchmesser:";
             // 
             // label5
             // 
@@ -165,16 +125,14 @@
             this.label5.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label5.Location = new System.Drawing.Point(3, 44);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(46, 13);
+            this.label5.Size = new System.Drawing.Size(49, 13);
             this.label5.TabIndex = 14;
-            this.label5.Text = "Zentrum";
+            this.label5.Text = "Zentrum:";
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Control;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.labBruecken);
-            this.panel1.Controls.Add(this.Label6);
             this.panel1.Controls.Add(this.labZentrum);
             this.panel1.Controls.Add(this.labZusammen);
             this.panel1.Controls.Add(this.labRadius);
@@ -186,30 +144,8 @@
             this.panel1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.panel1.Location = new System.Drawing.Point(15, 43);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(195, 75);
+            this.panel1.Size = new System.Drawing.Size(196, 62);
             this.panel1.TabIndex = 15;
-            // 
-            // labBruecken
-            // 
-            this.labBruecken.AutoSize = true;
-            this.labBruecken.BackColor = System.Drawing.SystemColors.Control;
-            this.labBruecken.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labBruecken.Location = new System.Drawing.Point(117, 57);
-            this.labBruecken.Name = "labBruecken";
-            this.labBruecken.Size = new System.Drawing.Size(61, 13);
-            this.labBruecken.TabIndex = 20;
-            this.labBruecken.Text = "labBrucken";
-            // 
-            // Label6
-            // 
-            this.Label6.AutoSize = true;
-            this.Label6.BackColor = System.Drawing.SystemColors.Control;
-            this.Label6.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Label6.Location = new System.Drawing.Point(3, 57);
-            this.Label6.Name = "Label6";
-            this.Label6.Size = new System.Drawing.Size(68, 13);
-            this.Label6.TabIndex = 19;
-            this.Label6.Text = "AnzBrücken:";
             // 
             // labZentrum
             // 
@@ -260,7 +196,7 @@
             this.Graphen.BackColor = System.Drawing.SystemColors.Control;
             this.Graphen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Graphen.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Graphen.Location = new System.Drawing.Point(346, 8);
+            this.Graphen.Location = new System.Drawing.Point(234, 55);
             this.Graphen.Name = "Graphen";
             this.Graphen.Size = new System.Drawing.Size(87, 27);
             this.Graphen.TabIndex = 2;
@@ -274,7 +210,7 @@
             this.wegBtn.BackColor = System.Drawing.SystemColors.Control;
             this.wegBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.wegBtn.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.wegBtn.Location = new System.Drawing.Point(234, 48);
+            this.wegBtn.Location = new System.Drawing.Point(346, 55);
             this.wegBtn.Name = "wegBtn";
             this.wegBtn.Size = new System.Drawing.Size(87, 27);
             this.wegBtn.TabIndex = 4;
@@ -288,9 +224,9 @@
             this.panel2.BackColor = System.Drawing.SystemColors.Control;
             this.panel2.Controls.Add(this.label1);
             this.panel2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.panel2.Location = new System.Drawing.Point(15, 148);
+            this.panel2.Location = new System.Drawing.Point(15, 171);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(530, 374);
+            this.panel2.Size = new System.Drawing.Size(530, 351);
             this.panel2.TabIndex = 18;
             // 
             // openFile
@@ -298,9 +234,9 @@
             this.openFile.BackColor = System.Drawing.SystemColors.Control;
             this.openFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.openFile.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.openFile.Location = new System.Drawing.Point(15, 8);
+            this.openFile.Location = new System.Drawing.Point(15, 13);
             this.openFile.Name = "openFile";
-            this.openFile.Size = new System.Drawing.Size(306, 27);
+            this.openFile.Size = new System.Drawing.Size(418, 27);
             this.openFile.TabIndex = 1;
             this.openFile.TabStop = false;
             this.openFile.Text = "Open File";
@@ -312,7 +248,7 @@
             this.button2.BackColor = System.Drawing.SystemColors.Control;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button2.Location = new System.Drawing.Point(503, 25);
+            this.button2.Location = new System.Drawing.Point(502, 30);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(42, 10);
             this.button2.TabIndex = 19;
@@ -326,7 +262,7 @@
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(48)))));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button1.Location = new System.Drawing.Point(458, 24);
+            this.button1.Location = new System.Drawing.Point(457, 29);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(39, 10);
             this.button1.TabIndex = 11;
@@ -338,23 +274,80 @@
             // labTheme
             // 
             this.labTheme.AutoSize = true;
-            this.labTheme.Location = new System.Drawing.Point(454, 8);
+            this.labTheme.Location = new System.Drawing.Point(453, 13);
             this.labTheme.Name = "labTheme";
             this.labTheme.Size = new System.Drawing.Size(43, 13);
             this.labTheme.TabIndex = 20;
             this.labTheme.Text = "Theme:";
             // 
-            // bruckenBtn
+            // panel3
             // 
-            this.bruckenBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bruckenBtn.Location = new System.Drawing.Point(457, 46);
-            this.bruckenBtn.Name = "bruckenBtn";
-            this.bruckenBtn.Size = new System.Drawing.Size(87, 27);
-            this.bruckenBtn.TabIndex = 21;
-            this.bruckenBtn.TabStop = false;
-            this.bruckenBtn.Text = "Brücken";
-            this.bruckenBtn.UseVisualStyleBackColor = true;
-            this.bruckenBtn.Click += new System.EventHandler(this.bruckenBtn_Click);
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.labBruck);
+            this.panel3.Controls.Add(this.labArtik);
+            this.panel3.Controls.Add(this.labKompo);
+            this.panel3.Controls.Add(this.label9);
+            this.panel3.Controls.Add(this.label8);
+            this.panel3.Controls.Add(this.label7);
+            this.panel3.Location = new System.Drawing.Point(15, 104);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(530, 61);
+            this.panel3.TabIndex = 22;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(3, 8);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(76, 13);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "Komponenten:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(3, 21);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(74, 13);
+            this.label8.TabIndex = 1;
+            this.label8.Text = "Artikulationen:";
+            this.label8.Click += new System.EventHandler(this.label8_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(3, 34);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(50, 13);
+            this.label9.TabIndex = 2;
+            this.label9.Text = "Brücken:";
+            // 
+            // labKompo
+            // 
+            this.labKompo.AutoSize = true;
+            this.labKompo.Location = new System.Drawing.Point(118, 8);
+            this.labKompo.Name = "labKompo";
+            this.labKompo.Size = new System.Drawing.Size(54, 13);
+            this.labKompo.TabIndex = 3;
+            this.labKompo.Text = "labKompo";
+            // 
+            // labArtik
+            // 
+            this.labArtik.AutoSize = true;
+            this.labArtik.Location = new System.Drawing.Point(118, 21);
+            this.labArtik.Name = "labArtik";
+            this.labArtik.Size = new System.Drawing.Size(42, 13);
+            this.labArtik.TabIndex = 4;
+            this.labArtik.Text = "labArtik";
+            // 
+            // labBruck
+            // 
+            this.labBruck.AutoSize = true;
+            this.labBruck.Location = new System.Drawing.Point(118, 34);
+            this.labBruck.Name = "labBruck";
+            this.labBruck.Size = new System.Drawing.Size(49, 13);
+            this.labBruck.TabIndex = 5;
+            this.labBruck.Text = "labBruck";
             // 
             // Form1
             // 
@@ -362,7 +355,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(557, 534);
-            this.Controls.Add(this.bruckenBtn);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.labTheme);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -371,9 +364,6 @@
             this.Controls.Add(this.wegBtn);
             this.Controls.Add(this.Graphen);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.komponentenBtn);
-            this.Controls.Add(this.artikulationenBtn);
-            this.Controls.Add(this.exzentrizitaetBtn);
             this.Controls.Add(this.distanzenBtn);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
@@ -383,6 +373,8 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -390,9 +382,6 @@
 
         #endregion
         private System.Windows.Forms.Button distanzenBtn;
-        private System.Windows.Forms.Button exzentrizitaetBtn;
-        private System.Windows.Forms.Button komponentenBtn;
-        private System.Windows.Forms.Button artikulationenBtn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -405,14 +394,18 @@
         private System.Windows.Forms.Label labDurchmesser;
         private System.Windows.Forms.Button Graphen;
         private System.Windows.Forms.Button wegBtn;
-        private System.Windows.Forms.Label labBruecken;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button openFile;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label labTheme;
-        private System.Windows.Forms.Button bruckenBtn;
-        private System.Windows.Forms.Label Label6;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label labBruck;
+        private System.Windows.Forms.Label labArtik;
+        private System.Windows.Forms.Label labKompo;
     }
 }
 
