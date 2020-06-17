@@ -473,7 +473,7 @@ namespace GrafenProgramm
         {
             Boolean aendern = true;
             int[,] AD = CopieMatrix(inputmatrix);
-            int[,] ADx = AD;
+            int[,] ADx = CopieMatrix(AD);
             for (int i = 0; i < ammountNode; i++)
             {
                 AD[i, i] = 1;
@@ -551,38 +551,34 @@ namespace GrafenProgramm
         //bekommt AD übergeben
         public ArrayList artikulation(int[,] art_matrix)
         {
+
             ArrayList artiku = new ArrayList();
             ArrayList komp = komponenten(WegMatrix(art_matrix));
             int kompanz = komp.Count;
 
-            int[,] temporary = null;
+            
             for (int x = 0; x < ammountNode; x++)
             {
-                temporary = null;
-                temporary = art_matrix;
+                int[,] temporary = CopieMatrix(art_matrix);
+                
                 int temp = 0;
                 for (int y = x; y < ammountNode; y++)
                 {
-
                     //zähle alle Kanten bro x
-                    if (art_matrix[y, x] == 1||y==x)
+                    if (temporary[y, x] == 1||y==x)
                     {
                         temp++;
                     }
                 }
-                //Artikulationen haben niemals den Grad 0 oder 1
-
+                //artikulations dont have the  value 0 or 1
                 if (temp > 2)
                 {
-                    MessageBox.Show(Show(temporary));
-                    for (int o = x;o<ammountNode;o++)
+                    for (int n = 0;n<ammountNode ;n++ )
                     {
-                        temporary[o,x] = 0;
-                        temporary[x,o] = 0;
+                        temporary[x, n] = 0;
+                        temporary[n, x] = 0;
                     }
-
-                    MessageBox.Show(Show(temporary));
-
+                    MessageBox.Show("bevore\n" + Show(temporary));
                     if (!Zusammenhaengend(Distanz(temporary)))
                     {
                         ArrayList i = komponenten(WegMatrix(temporary));

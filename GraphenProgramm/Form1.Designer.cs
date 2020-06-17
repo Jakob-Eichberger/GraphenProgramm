@@ -40,6 +40,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.labBruecken = new System.Windows.Forms.Label();
+            this.Label6 = new System.Windows.Forms.Label();
             this.labZentrum = new System.Windows.Forms.Label();
             this.labZusammen = new System.Windows.Forms.Label();
             this.labRadius = new System.Windows.Forms.Label();
@@ -52,7 +53,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.labTheme = new System.Windows.Forms.Label();
             this.bruckenBtn = new System.Windows.Forms.Button();
-            this.Label6 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -200,6 +200,17 @@
             this.labBruecken.TabIndex = 20;
             this.labBruecken.Text = "labBrucken";
             // 
+            // Label6
+            // 
+            this.Label6.AutoSize = true;
+            this.Label6.BackColor = System.Drawing.SystemColors.Control;
+            this.Label6.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.Label6.Location = new System.Drawing.Point(3, 57);
+            this.Label6.Name = "Label6";
+            this.Label6.Size = new System.Drawing.Size(68, 13);
+            this.Label6.TabIndex = 19;
+            this.Label6.Text = "AnzBrücken:";
+            // 
             // labZentrum
             // 
             this.labZentrum.AutoSize = true;
@@ -287,9 +298,9 @@
             this.openFile.BackColor = System.Drawing.SystemColors.Control;
             this.openFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.openFile.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.openFile.Location = new System.Drawing.Point(21, 8);
+            this.openFile.Location = new System.Drawing.Point(15, 8);
             this.openFile.Name = "openFile";
-            this.openFile.Size = new System.Drawing.Size(300, 27);
+            this.openFile.Size = new System.Drawing.Size(306, 27);
             this.openFile.TabIndex = 1;
             this.openFile.TabStop = false;
             this.openFile.Text = "Open File";
@@ -344,17 +355,6 @@
             this.bruckenBtn.Text = "Brücken";
             this.bruckenBtn.UseVisualStyleBackColor = true;
             this.bruckenBtn.Click += new System.EventHandler(this.bruckenBtn_Click);
-            // 
-            // Label6
-            // 
-            this.Label6.AutoSize = true;
-            this.Label6.BackColor = System.Drawing.SystemColors.Control;
-            this.Label6.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Label6.Location = new System.Drawing.Point(3, 57);
-            this.Label6.Name = "Label6";
-            this.Label6.Size = new System.Drawing.Size(68, 13);
-            this.Label6.TabIndex = 19;
-            this.Label6.Text = "AnzBrücken:";
             // 
             // Form1
             // 
