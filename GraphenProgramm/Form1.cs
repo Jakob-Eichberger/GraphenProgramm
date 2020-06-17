@@ -116,7 +116,7 @@ namespace GrafenProgramm
         private void artikulationenBtn_Click(object sender, EventArgs e)
         {
             ArrayList art = matrix.artikulation(matrix.Matrix);
-            string i = "";
+            string i = "Folgende(r) Knoten ist/sind artikulationen: ";
             foreach(string n in art)
             {
                 i += " " + n;
@@ -128,7 +128,7 @@ namespace GrafenProgramm
 
         private void exzentrizitaetBtn_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(matrix.Zusammenhaengend(matrix.Matrix).ToString());
+           // MessageBox.Show(matrix.Zusammenhaengend(matrix.Matrix).ToString());
         }
 
         private void distanzenBtn_Click(object sender, EventArgs e)

@@ -144,7 +144,7 @@ namespace GrafenProgramm
                             x--;
                         }
                     }
-                    Zusammenhaengend(matrix);
+                    Zusammenhaengend(matrix,ammountNode+1);
                 }
 
                 catch (IndexOutOfRangeException)
@@ -286,24 +286,24 @@ namespace GrafenProgramm
 
         }
         //if value x is found true is returned - Function does not check diagonal lines for x 
-        public Boolean checkForValueNoneDiagonal(int[,] b, int checkValue)
+        public Boolean checkForValueNoneDiagonal(int[,] b, int checkValue, int excludeXY)
         {
             Boolean valueFound = false;
             try
             {
-                int y = 0;
-                int x = 0;
-                for (int i = 0; i < b.Length; i++, x++)
+                for (int x = 0; x<ammountNode;x++)
                 {
-                    if (x == ammountNode)
+                    for (int y = 0;y<ammountNode;y++)
                     {
-                        y++;
-                        x = 0;
+                        if (x != excludeXY)
+                        {
+                            if (y != excludeXY)
+                            {
+                                if (x != y && b[y, x] == checkValue)
+                                    valueFound = true;
+                            }
+                        }
                     }
-                    if (y == ammountNode)
-                        i = b.Length;
-                    if (x != y && b[y, x] == checkValue)
-                        valueFound = true;
                 }
             }
             catch (IndexOutOfRangeException)
@@ -452,19 +452,19 @@ namespace GrafenProgramm
             }
         }
 
-        //bekommt AD übergeben
-        public Boolean Zusammenhaengend(int[,] AD)
+        //bekommt AD übergeben // exclude: x/y achsen die  bei der kontrolle ausgelassen werden sollen (wenn ausgelassen dann ammountNode+1)
+        public Boolean Zusammenhaengend(int[,] AD,int exclude)
         {
             int[,] i = Distanz(AD);
-            if (checkForValueNoneDiagonal(i, -1))
+            if (checkForValueNoneDiagonal(i, -1, exclude))
             {
                 zusammenhaengend = false;
-                return false;
+                return true;
             }
             else
             {
                 zusammenhaengend = true;
-                return true;
+                return false;
             }
         }
 
@@ -556,16 +556,16 @@ namespace GrafenProgramm
             ArrayList komp = komponenten(WegMatrix(art_matrix));
             int kompanz = komp.Count;
 
-            
+
             for (int x = 0; x < ammountNode; x++)
             {
                 int[,] temporary = CopieMatrix(art_matrix);
-                
+
                 int temp = 0;
                 for (int y = x; y < ammountNode; y++)
                 {
                     //zähle alle Kanten bro x
-                    if (temporary[y, x] == 1||y==x)
+                    if (temporary[y, x] == 1 || y == x)
                     {
                         temp++;
                     }
@@ -573,19 +573,18 @@ namespace GrafenProgramm
                 //artikulations dont have the  value 0 or 1
                 if (temp > 2)
                 {
-                    for (int n = 0;n<ammountNode ;n++ )
+                    for (int n = 0; n < ammountNode; n++)
                     {
                         temporary[x, n] = 0;
                         temporary[n, x] = 0;
                     }
-                    Boolean zus = Zusammenhaengend(temporary);
-                    if (!zus)
+                    Boolean zus = Zusammenhaengend(temporary,x);
+                    if (zus)
                     {
                         ArrayList i = komponenten(WegMatrix(temporary));
-                        if (i.Count>kompanz)
+                        if (i.Count > kompanz)
                         {
-                            artiku.Add($"{x+1}");
-                            MessageBox.Show($"{x+1}");
+                            artiku.Add($"{x + 1}");
                         }
                     }
                 }
