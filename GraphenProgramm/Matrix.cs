@@ -1,12 +1,13 @@
 ﻿/*
 ToDo: 
+check if Matrix is ok                           <- toDo
 Matrix Multiplikation                           <-  implemented           QA ok
 Bestimmung der Distanzen aller Knoten           2D <-  implemented    QA ok
 Bestimmung der  Exzentrizitaet aller Knoten     2D<-  implemented     QA ok   info: Die Exzentrizitäten können aus den Zeilen der Matrix ermittelt werden
 Radius,                                         2d<-  implemented     QA ok    
 Durchmesser,                                    2d<-  implemented     QA ok    
 Zentrum                                         <-  implemented       QA ok          
-Artikulationen,                                 <-  pending 
+Artikulationen,                                 <-  implemented     QA ok 
 Bruecken                                        <-  implemented     QA ok
 Komponenten                                     <-  implemented     QA ok
 WegMatrix                                       <-  implemented     QA ok
