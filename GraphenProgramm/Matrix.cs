@@ -555,13 +555,15 @@ namespace GrafenProgramm
             ArrayList komp = komponenten(WegMatrix(art_matrix));
             int kompanz = komp.Count;
 
-            int[,] temparray = art_matrix;
+            int[,] temporary = null;
             for (int x = 0; x < ammountNode; x++)
             {
-                temparray = art_matrix;
+                temporary = null;
+                temporary = art_matrix;
                 int temp = 0;
                 for (int y = x; y < ammountNode; y++)
                 {
+
                     //zähle alle Kanten bro x
                     if (art_matrix[y, x] == 1||y==x)
                     {
@@ -572,17 +574,18 @@ namespace GrafenProgramm
 
                 if (temp > 2)
                 {
+                    MessageBox.Show(Show(temporary));
                     for (int o = x;o<ammountNode;o++)
                     {
-                        temparray[o,x] = 0;
-                        temparray[x,o] = 0;
+                        temporary[o,x] = 0;
+                        temporary[x,o] = 0;
                     }
 
-                    MessageBox.Show(Show(temparray));
+                    MessageBox.Show(Show(temporary));
 
-                    if (!Zusammenhaengend(Distanz(temparray)))
+                    if (!Zusammenhaengend(Distanz(temporary)))
                     {
-                        ArrayList i = komponenten(WegMatrix(temparray));
+                        ArrayList i = komponenten(WegMatrix(temporary));
                         if (i.Count>kompanz)
                         {
                             artiku.Add($"{x+1}");
