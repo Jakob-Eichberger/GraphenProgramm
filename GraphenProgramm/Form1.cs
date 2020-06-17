@@ -28,8 +28,6 @@ namespace GrafenProgramm
         int radius;
         int durchmesser;
         string zentrum;
-        //Artikulationen
-        //Komponenten
 
         public Form1()
         {
@@ -65,14 +63,9 @@ namespace GrafenProgramm
             if (matrix.readOk && matrix.Matrix != null)
             {
                 distanz = matrix.Distanz(matrix.Matrix);
-                exzentrizitaeten = matrix.exzentrizitaeten();
                 radius = matrix.radius();
                 durchmesser = matrix.durchmesser();
                 zentrum = matrix.zentrum();
-
-
-
-
 
                 if (!matrix.ZusammenHaengend)
                 {

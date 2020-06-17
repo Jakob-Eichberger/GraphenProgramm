@@ -3,7 +3,7 @@ ToDo:
 check if Matrix is ok                           <- toDo
 Matrix Multiplikation                           <-  implemented           QA ok
 Bestimmung der Distanzen aller Knoten           2D <-  implemented    QA ok
-Bestimmung der  Exzentrizitaet aller Knoten     2D<-  implemented     QA ok   info: Die Exzentrizitäten können aus den Zeilen der Matrix ermittelt werden
+Bestimmung der  Exzentrizitaet aller Knoten     2D<-  implemented (not yet displayed)    QA ok   info: Die Exzentrizitäten können aus den Zeilen der Matrix ermittelt werden
 Radius,                                         2d<-  implemented     QA ok    
 Durchmesser,                                    2d<-  implemented     QA ok    
 Zentrum                                         <-  implemented       QA ok          
@@ -13,24 +13,17 @@ Komponenten                                     <-  implemented     QA ok
 WegMatrix                                       <-  implemented     QA ok
 */
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Collections;
-using System.CodeDom;
-using System.CodeDom.Compiler;
+
 
 namespace GrafenProgramm
 {
     public class MatrixClass
     {
-
         public int[,] matrix;
         int ammountNode = 0;
         public Boolean zusammenhaengend;
@@ -39,7 +32,6 @@ namespace GrafenProgramm
         public MatrixClass()
         {
         }
-
         //used to get the full matrix;
         public int[,] Matrix
         {
@@ -145,7 +137,7 @@ namespace GrafenProgramm
                             x--;
                         }
                     }
-                    Zusammenhaengend(matrix,ammountNode+1);
+                    Zusammenhaengend(matrix, ammountNode + 1);
                 }
 
                 catch (IndexOutOfRangeException)
@@ -292,9 +284,9 @@ namespace GrafenProgramm
             Boolean valueFound = false;
             try
             {
-                for (int x = 0; x<ammountNode;x++)
+                for (int x = 0; x < ammountNode; x++)
                 {
-                    for (int y = 0;y<ammountNode;y++)
+                    for (int y = 0; y < ammountNode; y++)
                     {
                         if (x != excludeXY)
                         {
@@ -385,6 +377,21 @@ namespace GrafenProgramm
                 eMatrix[y] = highestValue;
             }
             return eMatrix;
+
+        }
+
+        //return AD + Exzentrizitäten als string
+        public string exzentrizitaetenString()
+        {
+            int[,] tempaxa = CopieMatrix(Distanz(matrix));
+            int[,] tempaxb = new int[ammountNode, ammountNode + 2];
+            int[] exz = exzentrizitaeten();
+
+
+
+
+
+            return "";
         }
 
         //returns int - radius -  -1 wird returned wenn der graphen nicht zsammenhängend ist.
@@ -454,7 +461,7 @@ namespace GrafenProgramm
         }
 
         //bekommt AD übergeben // exclude: x/y achsen die  bei der kontrolle ausgelassen werden sollen (wenn ausgelassen dann ammountNode+1)
-        public Boolean Zusammenhaengend(int[,] AD,int exclude)
+        public Boolean Zusammenhaengend(int[,] AD, int exclude)
         {
             int[,] i = Distanz(AD);
             if (checkForValueNoneDiagonal(i, -1, exclude))
@@ -579,12 +586,12 @@ namespace GrafenProgramm
                         temporary[x, n] = 0;
                         temporary[n, x] = 0;
                     }
-                    Boolean zus = Zusammenhaengend(temporary,x);
+                    Boolean zus = Zusammenhaengend(temporary, x);
                     if (zus)
                     {
                         ArrayList i = komponenten(WegMatrix(temporary));
                         //i.Count-1 da wenn ich einen Knoten "lösche" er als eigene Kompoenten erkannt wirt
-                        if ((i.Count-1) > kompanz)
+                        if ((i.Count - 1) > kompanz)
                         {
                             artiku.Add($"{x + 1}");
                         }
