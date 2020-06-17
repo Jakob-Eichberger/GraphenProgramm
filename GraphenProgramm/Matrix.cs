@@ -578,11 +578,12 @@ namespace GrafenProgramm
                         temporary[x, n] = 0;
                         temporary[n, x] = 0;
                     }
+                   
                     Boolean zus = Zusammenhaengend(temporary,x);
                     if (zus)
                     {
                         ArrayList i = komponenten(WegMatrix(temporary));
-                        if (i.Count > kompanz)
+                        if ((i.Count-1) > kompanz)
                         {
                             artiku.Add($"{x + 1}");
                         }
