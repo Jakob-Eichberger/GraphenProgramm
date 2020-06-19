@@ -24,7 +24,7 @@ namespace GrafenProgramm
     {
         MatrixClass matrix = new MatrixClass();
         int[,] distanz;
-        int[] exzentrizitaeten;
+
         int radius;
         int durchmesser;
         string zentrum;
@@ -263,6 +263,10 @@ namespace GrafenProgramm
 
             this.panel3.BackColor = System.Drawing.SystemColors.Control;
 
+            this.generateBtn.BackColor = System.Drawing.SystemColors.Control;
+            this.generateBtn.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.generateBtn.ForeColor = System.Drawing.SystemColors.ControlText;
+
 
         }
         private void darkTheme()
@@ -345,6 +349,10 @@ namespace GrafenProgramm
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(48)))));
             this.panel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(48)))));
 
+            this.generateBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(48)))));
+            this.generateBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.generateBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(212)))), ((int)(((byte)(212)))));
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -363,6 +371,13 @@ namespace GrafenProgramm
 
         private void label8_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void generateBtn_Click(object sender, EventArgs e)
+        {
+            GenerateMatrix temp = new GenerateMatrix(10,false,false);
+
 
         }
     }

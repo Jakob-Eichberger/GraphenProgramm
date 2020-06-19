@@ -46,6 +46,7 @@ namespace GrafenProgramm
         public int AmmountNode
         {
             get { return ammountNode; }
+            set { ammountNode = value; }
         }
 
         public Boolean ZusammenHaengend
@@ -270,11 +271,11 @@ namespace GrafenProgramm
             }
             catch (IndexOutOfRangeException)
             {
-                MessageBox.Show("error");
+                MessageBox.Show("index out of range");
             }
             catch (NullReferenceException)
             {
-                MessageBox.Show("error");
+                MessageBox.Show("null pointer exception");
             }
             return null;
 

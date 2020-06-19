@@ -48,12 +48,13 @@
             this.button1 = new System.Windows.Forms.Button();
             this.labTheme = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.labKompo = new System.Windows.Forms.Label();
-            this.labArtik = new System.Windows.Forms.Label();
             this.labBruck = new System.Windows.Forms.Label();
+            this.labArtik = new System.Windows.Forms.Label();
+            this.labKompo = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.generateBtn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -236,10 +237,10 @@
             this.openFile.ForeColor = System.Drawing.SystemColors.ControlText;
             this.openFile.Location = new System.Drawing.Point(15, 13);
             this.openFile.Name = "openFile";
-            this.openFile.Size = new System.Drawing.Size(418, 27);
+            this.openFile.Size = new System.Drawing.Size(306, 27);
             this.openFile.TabIndex = 1;
             this.openFile.TabStop = false;
-            this.openFile.Text = "Open File";
+            this.openFile.Text = "Upload";
             this.openFile.UseVisualStyleBackColor = false;
             this.openFile.Click += new System.EventHandler(this.openFile_Click);
             // 
@@ -294,14 +295,41 @@
             this.panel3.Size = new System.Drawing.Size(530, 61);
             this.panel3.TabIndex = 22;
             // 
-            // label7
+            // labBruck
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(3, 8);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(76, 13);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "Komponenten:";
+            this.labBruck.AutoSize = true;
+            this.labBruck.Location = new System.Drawing.Point(118, 34);
+            this.labBruck.Name = "labBruck";
+            this.labBruck.Size = new System.Drawing.Size(49, 13);
+            this.labBruck.TabIndex = 5;
+            this.labBruck.Text = "labBruck";
+            // 
+            // labArtik
+            // 
+            this.labArtik.AutoSize = true;
+            this.labArtik.Location = new System.Drawing.Point(118, 21);
+            this.labArtik.Name = "labArtik";
+            this.labArtik.Size = new System.Drawing.Size(42, 13);
+            this.labArtik.TabIndex = 4;
+            this.labArtik.Text = "labArtik";
+            // 
+            // labKompo
+            // 
+            this.labKompo.AutoSize = true;
+            this.labKompo.Location = new System.Drawing.Point(118, 8);
+            this.labKompo.Name = "labKompo";
+            this.labKompo.Size = new System.Drawing.Size(54, 13);
+            this.labKompo.TabIndex = 3;
+            this.labKompo.Text = "labKompo";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(3, 34);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(50, 13);
+            this.label9.TabIndex = 2;
+            this.label9.Text = "Brücken:";
             // 
             // label8
             // 
@@ -313,41 +341,26 @@
             this.label8.Text = "Artikulationen:";
             this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
-            // label9
+            // label7
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(3, 34);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(50, 13);
-            this.label9.TabIndex = 2;
-            this.label9.Text = "Brücken:";
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(3, 8);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(76, 13);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "Komponenten:";
             // 
-            // labKompo
+            // generateBtn
             // 
-            this.labKompo.AutoSize = true;
-            this.labKompo.Location = new System.Drawing.Point(118, 8);
-            this.labKompo.Name = "labKompo";
-            this.labKompo.Size = new System.Drawing.Size(54, 13);
-            this.labKompo.TabIndex = 3;
-            this.labKompo.Text = "labKompo";
-            // 
-            // labArtik
-            // 
-            this.labArtik.AutoSize = true;
-            this.labArtik.Location = new System.Drawing.Point(118, 21);
-            this.labArtik.Name = "labArtik";
-            this.labArtik.Size = new System.Drawing.Size(42, 13);
-            this.labArtik.TabIndex = 4;
-            this.labArtik.Text = "labArtik";
-            // 
-            // labBruck
-            // 
-            this.labBruck.AutoSize = true;
-            this.labBruck.Location = new System.Drawing.Point(118, 34);
-            this.labBruck.Name = "labBruck";
-            this.labBruck.Size = new System.Drawing.Size(49, 13);
-            this.labBruck.TabIndex = 5;
-            this.labBruck.Text = "labBruck";
+            this.generateBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.generateBtn.Location = new System.Drawing.Point(346, 12);
+            this.generateBtn.Name = "generateBtn";
+            this.generateBtn.Size = new System.Drawing.Size(87, 28);
+            this.generateBtn.TabIndex = 23;
+            this.generateBtn.TabStop = false;
+            this.generateBtn.Text = "Generate";
+            this.generateBtn.UseVisualStyleBackColor = true;
+            this.generateBtn.Click += new System.EventHandler(this.generateBtn_Click);
             // 
             // Form1
             // 
@@ -355,6 +368,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(557, 534);
+            this.Controls.Add(this.generateBtn);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.labTheme);
             this.Controls.Add(this.button2);
@@ -406,6 +420,7 @@
         private System.Windows.Forms.Label labBruck;
         private System.Windows.Forms.Label labArtik;
         private System.Windows.Forms.Label labKompo;
+        private System.Windows.Forms.Button generateBtn;
     }
 }
 
