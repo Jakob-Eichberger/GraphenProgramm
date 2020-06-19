@@ -170,7 +170,7 @@ namespace GrafenProgramm
 
         private void Graphen_Click(object sender, EventArgs e)
         {
-            label1.Text = matrix.Show(matrix.Matrix);
+            label1.Text = matrix.exzentrizitaetenString();
         }
 
         private void wegBtn_Click(object sender, EventArgs e)

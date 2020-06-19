@@ -18,7 +18,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 using System.Collections;
-
+using System.Windows.Forms.VisualStyles;
 
 namespace GrafenProgramm
 {
@@ -73,6 +73,7 @@ namespace GrafenProgramm
                     {
                         inputFile = sr.ReadToEnd();
                     }
+                    
                     readOk = true;
 
                 }
@@ -107,8 +108,9 @@ namespace GrafenProgramm
 
             String csvInput = FileSelector();
 
+            checkIfCsvFileIsOk(csvInput);
 
-            if (checkIfCsvFileIsOk(csvInput))
+            if (readOk)
             {
                 //Figure out how many nodes there are
                 for (int i = 0; i < csvInput.IndexOf("\r\n"); i++)
@@ -152,11 +154,11 @@ namespace GrafenProgramm
         }
 
         //Checks if there are any unallowed characters in the inputfile
-        private bool checkIfCsvFileIsOk(string input)
+        private void checkIfCsvFileIsOk(string input)
         {
             try
             {
-                for (int i = 0; i < input.Length; i++)
+                for (int i = 0; i < input.Length && readOk; i++)
                 {
                     if (input[i] == '0' || input[i] == '1' || input[i] == ',' || input[i] == '\r' || input[i] == '\n')
                     {
@@ -170,13 +172,12 @@ namespace GrafenProgramm
                         throw new Exception($"Character '{input[i]}' at index {i} is not allowed. Please fix the csv file and try again!");
                     }
                 }
-                return true;
             }
             catch (Exception e)
             {
                 MessageBox.Show(e.Message);
             }
-            return false;
+
         }
 
         //it works -> dont touch it
@@ -383,15 +384,21 @@ namespace GrafenProgramm
         //return AD + Exzentrizitäten als string
         public string exzentrizitaetenString()
         {
-            int[,] tempaxa = CopieMatrix(Distanz(matrix));
-            int[,] tempaxb = new int[ammountNode, ammountNode + 2];
+            int[,] tempaxa = CopieMatrix(matrix);
             int[] exz = exzentrizitaeten();
-
-
-
-
-
-            return "";
+            
+            string temp = "";
+            for (int y = 0; y < ammountNode ; y++)
+            {
+             
+                  
+                for (int x = 0; x <ammountNode; x++)
+                {
+                    temp += $"{tempaxa[y,x]}  ";
+                }
+                temp += $"|{exz[y]}\n";
+            }
+            return temp;
         }
 
         //returns int - radius -  -1 wird returned wenn der graphen nicht zsammenhängend ist.
