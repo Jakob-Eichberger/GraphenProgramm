@@ -11,6 +11,8 @@ using System.IO;
 using System.Collections;
 using GrafenProgramm.Properties;
 using System.Linq.Expressions;
+using System.Threading;
+
 
 /*
 ToDo: 
@@ -33,7 +35,7 @@ namespace GrafenProgramm
         {
             InitializeComponent();
 
-            if (Settings.Default["theme"].ToString() == 1.ToString())
+            if (Properties.Settings.Default["theme"].ToString() == 1.ToString())
             {
                 darkTheme();
             }
@@ -54,8 +56,9 @@ namespace GrafenProgramm
 
         }
 
-        private void berechneGraphen(Boolean readfile, int[,] newmatrix,int size)
+        private Boolean berechneGraphen(Boolean readfile, int[,] newmatrix, int size)
         {
+            //either read from file or geneatte a new one;
             label1.Text = "";
             if (readfile)
             {
@@ -69,7 +72,21 @@ namespace GrafenProgramm
                 matrix.ReadOk = true;
             }
 
+            //figure out how big the matrix is and  ajust label1's font
+            int fontsieze;
+            if (readfile)
+            {
+                 fontsieze = 200 / matrix.AmmountNode>0?matrix.AmmountNode:1;
+            }
+            else
+            {
+                 fontsieze = 200 / size;
+            }
+            label1.Font = new Font("Microsoft Sans Serif", fontsieze);
 
+
+
+            //do all the othe stuff
             if (matrix.readOk && matrix.Matrix != null)
             {
                 distanz = matrix.Distanz(matrix.Matrix);
@@ -145,13 +162,14 @@ namespace GrafenProgramm
                 labDurchmesser.Text = "-";
                 labZusammen.Text = "-";
             }
+            return true;
         }
         private void openFile_Click(object sender, EventArgs e)
         {
 
-            berechneGraphen(true,null,0);
+            berechneGraphen(true, null, 0);
 
-            
+
         }
 
 
@@ -357,15 +375,15 @@ namespace GrafenProgramm
         private void button1_Click(object sender, EventArgs e)
         {
             darkTheme();
-            Settings.Default["theme"] = 1.ToString();
-            Settings.Default.Save();
+            Properties.Settings.Default["theme"] = 1.ToString();
+            Properties.Settings.Default.Save();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             brightTheme();
-            Settings.Default["theme"] = 0.ToString();
-            Settings.Default.Save();
+            Properties.Settings.Default["theme"] = 0.ToString();
+            Properties.Settings.Default.Save();
         }
 
         private void label8_Click(object sender, EventArgs e)
@@ -375,11 +393,19 @@ namespace GrafenProgramm
 
         private void generateBtn_Click(object sender, EventArgs e)
         {
+            generateBtn.Text = "LOADING";
+            
+            int size = 0;
+            Boolean zusammenhangen;
+            Boolean artikulationen;
             GenerateMatrix temp = new GenerateMatrix();
-            int[,] temp1 = temp.generateMatrix(10, false, false);
-            berechneGraphen(false, temp1, 10);
+            int[,] temp1 = temp.generateMatrix(20, false, false);
+            berechneGraphen(false, temp1, 20);
+            generateBtn.Text = "Generate";
 
         }
+
+
     }
 }
 

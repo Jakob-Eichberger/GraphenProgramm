@@ -78,10 +78,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.Control;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label1.Location = new System.Drawing.Point(4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(34, 13);
+            this.label1.Size = new System.Drawing.Size(87, 31);
             this.label1.TabIndex = 10;
             this.label1.Text = "matrix";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -124,7 +125,7 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.SystemColors.Control;
             this.label5.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label5.Location = new System.Drawing.Point(4, 21);
+            this.label5.Location = new System.Drawing.Point(7, 16);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(49, 13);
             this.label5.TabIndex = 14;
@@ -153,7 +154,7 @@
             this.labZentrum.AutoSize = true;
             this.labZentrum.BackColor = System.Drawing.SystemColors.Control;
             this.labZentrum.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labZentrum.Location = new System.Drawing.Point(118, 21);
+            this.labZentrum.Location = new System.Drawing.Point(121, 16);
             this.labZentrum.Name = "labZentrum";
             this.labZentrum.Size = new System.Drawing.Size(43, 13);
             this.labZentrum.TabIndex = 18;
@@ -298,7 +299,7 @@
             // labBruck
             // 
             this.labBruck.AutoSize = true;
-            this.labBruck.Location = new System.Drawing.Point(118, 34);
+            this.labBruck.Location = new System.Drawing.Point(121, 29);
             this.labBruck.Name = "labBruck";
             this.labBruck.Size = new System.Drawing.Size(49, 13);
             this.labBruck.TabIndex = 5;
@@ -316,7 +317,7 @@
             // labKompo
             // 
             this.labKompo.AutoSize = true;
-            this.labKompo.Location = new System.Drawing.Point(118, 8);
+            this.labKompo.Location = new System.Drawing.Point(121, 3);
             this.labKompo.Name = "labKompo";
             this.labKompo.Size = new System.Drawing.Size(54, 13);
             this.labKompo.TabIndex = 3;
@@ -325,7 +326,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(3, 34);
+            this.label9.Location = new System.Drawing.Point(6, 29);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(50, 13);
             this.label9.TabIndex = 2;
@@ -344,7 +345,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(3, 8);
+            this.label7.Location = new System.Drawing.Point(6, 3);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(76, 13);
             this.label7.TabIndex = 0;
@@ -374,11 +375,11 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.openFile);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.wegBtn);
             this.Controls.Add(this.Graphen);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.distanzenBtn);
+            this.Controls.Add(this.panel2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "               ";

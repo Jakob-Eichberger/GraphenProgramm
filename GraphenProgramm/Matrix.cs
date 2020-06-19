@@ -393,13 +393,13 @@ namespace GrafenProgramm
             string temp = "";
             for (int y = 0; y < ammountNode ; y++)
             {
-             
-                  
+
+                temp += "  ";
                 for (int x = 0; x <ammountNode; x++)
                 {
-                    temp += $"{tempaxa[y,x]}  ";
+                    temp += $"{tempaxa[y,x]}    ";
                 }
-                temp += $"|{exz[y]}\n";
+                temp += $"|  {exz[y]}\n";
             }
             return temp;
         }
