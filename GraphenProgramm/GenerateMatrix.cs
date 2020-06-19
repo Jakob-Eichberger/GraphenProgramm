@@ -10,9 +10,17 @@ namespace GrafenProgramm
 {
     class GenerateMatrix
     {
+
+
         int[,] matrix;
-        public GenerateMatrix(int size, Boolean zusammenhaengend, Boolean artikualtion)
-        {   
+        public GenerateMatrix()
+        {
+
+
+        }
+
+        public int[,] generateMatrix(int size, Boolean zusammenhaengend, Boolean artikualtion)
+        {
             matrix = new int[size, size];
             int result;
             Random r = new Random();
@@ -35,7 +43,9 @@ namespace GrafenProgramm
 
             }
 
+            return matrix;
         }
+
 
 
     }

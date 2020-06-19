@@ -36,11 +36,13 @@ namespace GrafenProgramm
         public int[,] Matrix
         {
             get { return matrix; }
+            set { matrix = value; }
         }
 
         public Boolean ReadOk
         {
             get { return readOk; }
+            set { readOk = value; }
         }
 
         public int AmmountNode

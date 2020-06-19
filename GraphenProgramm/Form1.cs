@@ -54,11 +54,21 @@ namespace GrafenProgramm
 
         }
 
-        private void openFile_Click(object sender, EventArgs e)
+        private void berechneGraphen(Boolean readfile, int[,] newmatrix,int size)
         {
-
             label1.Text = "";
-            matrix.ReadCSV();
+            if (readfile)
+            {
+                label1.Text = "";
+                matrix.ReadCSV();
+            }
+            else
+            {
+                matrix.Matrix = newmatrix;
+                matrix.AmmountNode = size;
+                matrix.ReadOk = true;
+            }
+
 
             if (matrix.readOk && matrix.Matrix != null)
             {
@@ -136,25 +146,14 @@ namespace GrafenProgramm
                 labZusammen.Text = "-";
             }
         }
-
-
-        private void komponentenBtn_Click(object sender, EventArgs e)
+        private void openFile_Click(object sender, EventArgs e)
         {
 
-            // MessageBox.Show(x.Count.ToString());
+            berechneGraphen(true,null,0);
+
+            
         }
 
-        private void artikulationenBtn_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
-
-        private void exzentrizitaetBtn_Click(object sender, EventArgs e)
-        {
-          
-        }
 
         private void distanzenBtn_Click(object sender, EventArgs e)
         {
@@ -376,8 +375,9 @@ namespace GrafenProgramm
 
         private void generateBtn_Click(object sender, EventArgs e)
         {
-            GenerateMatrix temp = new GenerateMatrix(10,false,false);
-
+            GenerateMatrix temp = new GenerateMatrix();
+            int[,] temp1 = temp.generateMatrix(10, false, false);
+            berechneGraphen(false, temp1, 10);
 
         }
     }

@@ -124,7 +124,7 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.SystemColors.Control;
             this.label5.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label5.Location = new System.Drawing.Point(3, 44);
+            this.label5.Location = new System.Drawing.Point(4, 21);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(49, 13);
             this.label5.TabIndex = 14;
@@ -134,12 +134,12 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Control;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.labZentrum);
             this.panel1.Controls.Add(this.labZusammen);
+            this.panel1.Controls.Add(this.labArtik);
             this.panel1.Controls.Add(this.labRadius);
             this.panel1.Controls.Add(this.labDurchmesser);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label4);
             this.panel1.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -153,7 +153,7 @@
             this.labZentrum.AutoSize = true;
             this.labZentrum.BackColor = System.Drawing.SystemColors.Control;
             this.labZentrum.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labZentrum.Location = new System.Drawing.Point(117, 44);
+            this.labZentrum.Location = new System.Drawing.Point(118, 21);
             this.labZentrum.Name = "labZentrum";
             this.labZentrum.Size = new System.Drawing.Size(43, 13);
             this.labZentrum.TabIndex = 18;
@@ -284,11 +284,11 @@
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.labZentrum);
             this.panel3.Controls.Add(this.labBruck);
-            this.panel3.Controls.Add(this.labArtik);
             this.panel3.Controls.Add(this.labKompo);
+            this.panel3.Controls.Add(this.label5);
             this.panel3.Controls.Add(this.label9);
-            this.panel3.Controls.Add(this.label8);
             this.panel3.Controls.Add(this.label7);
             this.panel3.Location = new System.Drawing.Point(15, 104);
             this.panel3.Name = "panel3";
@@ -307,7 +307,7 @@
             // labArtik
             // 
             this.labArtik.AutoSize = true;
-            this.labArtik.Location = new System.Drawing.Point(118, 21);
+            this.labArtik.Location = new System.Drawing.Point(118, 44);
             this.labArtik.Name = "labArtik";
             this.labArtik.Size = new System.Drawing.Size(42, 13);
             this.labArtik.TabIndex = 4;
@@ -334,7 +334,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(3, 21);
+            this.label8.Location = new System.Drawing.Point(3, 44);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(74, 13);
             this.label8.TabIndex = 1;
