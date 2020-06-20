@@ -21,10 +21,22 @@ namespace GrafenProgramm
         public FormSettings()
         {
             InitializeComponent();
-            numericUpDown1.Value = Convert.ToDecimal(Properties.Settings.Default["size"]);
+
+
             checkBox3.Checked = Convert.ToBoolean(Properties.Settings.Default["enable"]);
             checkBox2.Checked = Convert.ToBoolean(Properties.Settings.Default["zusammenhangen"]);
             checkBox1.Checked = Convert.ToBoolean(Properties.Settings.Default["artikulationen"]);
+
+
+
+            if (!checkBox3.Checked)
+            {
+                numericUpDown1.Value = Convert.ToDecimal(Properties.Settings.Default["size"]);
+            }
+            else
+            {
+                numericUpDown1.Value = 0;
+            }
             checkifcheckbox3ischeckd();
 
         }
@@ -54,9 +66,11 @@ namespace GrafenProgramm
                 label2.Text = "Option  verursacht lange durchlaufzeit!";
                 checkBox1.Enabled = true;
                 checkBox2.Enabled = true;
+                numericUpDown1.Maximum = 5;
             }
             else
             {
+                numericUpDown1.Maximum = 30;
                 checkBox1.Enabled = false;
                 checkBox2.Enabled = false;
                 label2.Text = "";
@@ -71,11 +85,11 @@ namespace GrafenProgramm
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
-  
-                size = Convert.ToInt32(numericUpDown1.Value);
-                Properties.Settings.Default["size"] = Convert.ToInt32(numericUpDown1.Value);
-                Properties.Settings.Default.Save();
-          
+
+            size = Convert.ToInt32(numericUpDown1.Value);
+            Properties.Settings.Default["size"] = Convert.ToInt32(numericUpDown1.Value);
+            Properties.Settings.Default.Save();
+
 
         }
 

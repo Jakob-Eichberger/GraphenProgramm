@@ -22,7 +22,8 @@ namespace GrafenProgramm
 
         public int[,] generateMatrix(int size, Boolean zusammenhaengend, Boolean artikualtion)
         {
-            
+            MatrixClass mtrx = new MatrixClass();
+
             matrix = new int[size, size];
             int result;
             Random r = new Random();
@@ -44,6 +45,9 @@ namespace GrafenProgramm
                 }
 
             }
+
+
+
 
             return matrix;
         }
