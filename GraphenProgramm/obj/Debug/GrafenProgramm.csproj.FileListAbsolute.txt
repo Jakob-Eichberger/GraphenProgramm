@@ -28,3 +28,4 @@ C:\Users\jakob\Documents\GitHub\GraphenProgramm\GraphenProgramm\obj\Debug\Grafen
 C:\Users\jakob\Documents\GitHub\GraphenProgramm\GraphenProgramm\obj\Debug\GrafenProgramm.csproj.CoreCompileInputs.cache
 C:\Users\jakob\Documents\GitHub\GraphenProgramm\GraphenProgramm\obj\Debug\GrafenProgramm.exe
 C:\Users\jakob\Documents\GitHub\GraphenProgramm\GraphenProgramm\obj\Debug\GrafenProgramm.pdb
+C:\Users\jakob\source\repos\GraphenProgramm\GraphenProgramm\GraphenProgramm\obj\Debug\GrafenProgramm.FormSettings.resources

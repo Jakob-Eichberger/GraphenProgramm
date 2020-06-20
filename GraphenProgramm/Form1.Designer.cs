@@ -154,7 +154,7 @@
             this.labZentrum.AutoSize = true;
             this.labZentrum.BackColor = System.Drawing.SystemColors.Control;
             this.labZentrum.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labZentrum.Location = new System.Drawing.Point(121, 16);
+            this.labZentrum.Location = new System.Drawing.Point(88, 16);
             this.labZentrum.Name = "labZentrum";
             this.labZentrum.Size = new System.Drawing.Size(43, 13);
             this.labZentrum.TabIndex = 18;
@@ -228,7 +228,7 @@
             this.panel2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.panel2.Location = new System.Drawing.Point(15, 171);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(530, 351);
+            this.panel2.Size = new System.Drawing.Size(588, 351);
             this.panel2.TabIndex = 18;
             // 
             // openFile
@@ -293,13 +293,13 @@
             this.panel3.Controls.Add(this.label7);
             this.panel3.Location = new System.Drawing.Point(15, 104);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(530, 61);
+            this.panel3.Size = new System.Drawing.Size(588, 61);
             this.panel3.TabIndex = 22;
             // 
             // labBruck
             // 
             this.labBruck.AutoSize = true;
-            this.labBruck.Location = new System.Drawing.Point(121, 29);
+            this.labBruck.Location = new System.Drawing.Point(88, 29);
             this.labBruck.Name = "labBruck";
             this.labBruck.Size = new System.Drawing.Size(49, 13);
             this.labBruck.TabIndex = 5;
@@ -317,7 +317,7 @@
             // labKompo
             // 
             this.labKompo.AutoSize = true;
-            this.labKompo.Location = new System.Drawing.Point(121, 3);
+            this.labKompo.Location = new System.Drawing.Point(88, 3);
             this.labKompo.Name = "labKompo";
             this.labKompo.Size = new System.Drawing.Size(54, 13);
             this.labKompo.TabIndex = 3;
@@ -368,7 +368,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(557, 534);
+            this.ClientSize = new System.Drawing.Size(615, 534);
             this.Controls.Add(this.generateBtn);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.labTheme);

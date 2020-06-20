@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -21,6 +22,7 @@ namespace GrafenProgramm
 
         public int[,] generateMatrix(int size, Boolean zusammenhaengend, Boolean artikualtion)
         {
+            
             matrix = new int[size, size];
             int result;
             Random r = new Random();

@@ -76,12 +76,26 @@ namespace GrafenProgramm
             int fontsieze;
             if (readfile)
             {
-                 fontsieze = 200 / matrix.AmmountNode>0?matrix.AmmountNode:1;
+                fontsieze = 200 / matrix.AmmountNode > 0 ? matrix.AmmountNode : 1;
+                if (matrix.AmmountNode < 10)
+                {
+                    fontsieze = 18;
+                }
             }
             else
             {
-                 fontsieze = 200 / size;
+                
+                if (size < 10)
+                {
+                    fontsieze = 18;
+                }
+                else
+                {
+                    fontsieze = 200 / size;
+                }
+                
             }
+
             label1.Font = new Font("Microsoft Sans Serif", fontsieze);
 
 
@@ -393,15 +407,25 @@ namespace GrafenProgramm
 
         private void generateBtn_Click(object sender, EventArgs e)
         {
+
             generateBtn.Text = "LOADING";
-            
-            int size = 0;
+
+            FormSettings stn = new FormSettings();
+            stn.ShowDialog();
+
+            int size = stn.Size;
             Boolean zusammenhangen;
             Boolean artikulationen;
+
+
             GenerateMatrix temp = new GenerateMatrix();
-            int[,] temp1 = temp.generateMatrix(20, false, false);
-            berechneGraphen(false, temp1, 20);
+            int[,] temp1 = temp.generateMatrix(size, false, false);
+            berechneGraphen(false, temp1, size);
             generateBtn.Text = "Generate";
+
+        }
+        private void generate()
+        {
 
         }
 

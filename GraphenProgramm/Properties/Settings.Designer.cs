@@ -34,5 +34,53 @@ namespace GrafenProgramm.Properties {
                 this["theme"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        public int size {
+            get {
+                return ((int)(this["size"]));
+            }
+            set {
+                this["size"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool zusammenhangen {
+            get {
+                return ((bool)(this["zusammenhangen"]));
+            }
+            set {
+                this["zusammenhangen"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool artikulationen {
+            get {
+                return ((bool)(this["artikulationen"]));
+            }
+            set {
+                this["artikulationen"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool enable {
+            get {
+                return ((bool)(this["enable"]));
+            }
+            set {
+                this["enable"] = value;
+            }
+        }
     }
 }
