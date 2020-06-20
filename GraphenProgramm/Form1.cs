@@ -152,7 +152,7 @@ namespace GrafenProgramm
                 labKompo.Text = m;
 
                 //Artikulationen am Label anzeigen
-                ArrayList art = matrix.artikulation(matrix.Matrix);
+                ArrayList art = matrix.artikulationen(matrix.Matrix);
                 string oo = "";
                 if (art.Count != 0)
                 {
@@ -416,10 +416,11 @@ namespace GrafenProgramm
             int size = stn.Size;
             Boolean zusammenhangen = stn.Zusammenhangen;
             Boolean artikulationen = stn.Artikulationen;
+            Boolean enable = stn.enabled;
 
 
             GenerateMatrix temp = new GenerateMatrix();
-            int[,] temp1 = temp.generateMatrix(size, zusammenhangen, artikulationen);
+            int[,] temp1 = temp.generateMatrix(size, zusammenhangen, artikulationen,enable);
             berechneGraphen(false, temp1, size);
             Thread.Sleep(300);
             generateBtn.Text = "Generate";

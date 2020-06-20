@@ -58,7 +58,10 @@ namespace GrafenProgramm
         {
             this.Close();
         }
-
+        public Boolean enabled
+        {
+            get { return checkBox3.Checked; }
+        }
         private void checkifcheckbox3ischeckd()
         {
             if (checkBox3.Checked == true)

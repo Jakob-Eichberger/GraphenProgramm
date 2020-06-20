@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Drawing.Drawing2D;
 using System.Linq;
@@ -20,7 +21,7 @@ namespace GrafenProgramm
 
         }
 
-        public int[,] generateMatrix(int size, Boolean zusammenhaengend, Boolean artikualtion)
+        public int[,] generateMatrix(int size, Boolean zusammenhaengend, Boolean artikualtion, Boolean enable)
         {
             MatrixClass mtrx = new MatrixClass();
 
@@ -46,8 +47,14 @@ namespace GrafenProgramm
 
             }
 
-
-
+            if (enable)
+            {
+                mtrx.AmmountNode = size;
+                mtrx.Matrix = matrix;
+                ArrayList abc = mtrx.artikulationen(matrix);
+                Boolean b = mtrx.zusammenhaengend;
+               
+            }
 
             return matrix;
         }

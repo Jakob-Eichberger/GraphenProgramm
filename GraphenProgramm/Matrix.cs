@@ -591,7 +591,7 @@ namespace GrafenProgramm
         }
 
         //bekommt AD übergeben
-        public ArrayList artikulation(int[,] art_matrix)
+        public ArrayList artikulationen(int[,] art_matrix)
         {
 
             ArrayList artiku = new ArrayList();
