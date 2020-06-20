@@ -151,6 +151,30 @@ namespace GrafenProgramm
 
                     Application.Exit();
                 }
+
+
+                try
+                {
+                    for (int y = 0;y<ammountNode && readOk;y++)
+                    {
+                        for (int x = y;x<ammountNode && readOk;x++)
+                        {
+                            if (matrix[y,x]!=matrix[x,y])
+                            {
+                                readOk = false;
+                                throw new Exception("Matrix not diagonal");
+                            }
+                           
+                        }
+                    }
+
+
+                }
+                catch (Exception e)
+                {
+                    readOk = false;
+                    MessageBox.Show(e.Message);
+                }
                 return true;
             }
             return false;
