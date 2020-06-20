@@ -414,13 +414,14 @@ namespace GrafenProgramm
             stn.ShowDialog();
 
             int size = stn.Size;
-            Boolean zusammenhangen;
-            Boolean artikulationen;
+            Boolean zusammenhangen = stn.Zusammenhangen;
+            Boolean artikulationen = stn.Artikulationen;
 
 
             GenerateMatrix temp = new GenerateMatrix();
-            int[,] temp1 = temp.generateMatrix(size, false, false);
+            int[,] temp1 = temp.generateMatrix(size, zusammenhangen, artikulationen);
             berechneGraphen(false, temp1, size);
+            Thread.Sleep(300);
             generateBtn.Text = "Generate";
 
         }

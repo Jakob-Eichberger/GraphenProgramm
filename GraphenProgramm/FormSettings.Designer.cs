@@ -34,8 +34,8 @@
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -105,6 +105,15 @@
             this.panel1.Size = new System.Drawing.Size(281, 100);
             this.panel1.TabIndex = 5;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(74, 8);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(189, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Option  verursacht lange durchlaufzeit!";
+            // 
             // checkBox3
             // 
             this.checkBox3.AutoSize = true;
@@ -115,15 +124,6 @@
             this.checkBox3.Text = "Enable ";
             this.checkBox3.UseVisualStyleBackColor = false;
             this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(74, 8);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(189, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Option  verursacht lange durchlaufzeit!";
             // 
             // FormSettings
             // 
