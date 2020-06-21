@@ -35,7 +35,15 @@ namespace GrafenProgramm
             }
             else
             {
-                numericUpDown1.Value = 0;
+                if (Convert.ToDecimal(Properties.Settings.Default["size"])>5)
+                {
+                    numericUpDown1.Value = 5;
+                }
+                else
+                {
+                    numericUpDown1.Value = Convert.ToDecimal(Properties.Settings.Default["size"]);
+                }
+                
             }
             checkifcheckbox3ischeckd();
 

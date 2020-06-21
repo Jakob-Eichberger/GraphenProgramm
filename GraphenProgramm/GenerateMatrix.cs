@@ -53,7 +53,30 @@ namespace GrafenProgramm
                 mtrx.Matrix = matrix;
                 ArrayList abc = mtrx.artikulationen(matrix);
                 Boolean b = mtrx.zusammenhaengend;
-               
+                int matrixok = 0;
+                if (artikualtion && abc.Count > 0)
+                {
+                    matrixok++;
+                }
+                if (!artikualtion && abc.Count == 0)
+                {
+                    matrixok++;
+                }
+                if (zusammenhaengend && b)
+                {
+                    matrixok++;
+                }
+                if (!zusammenhaengend && !b)
+                {
+                    matrixok++;
+                }
+
+                MessageBox.Show($"matrixok wert: {matrixok.ToString()}\nartikualtion:{artikualtion} -{abc.Count}\n zusammen{zusammenhaengend} - {b}");
+                if (matrixok != 2)
+                {
+                    generateMatrix(size, zusammenhaengend, artikualtion, enable);
+                }
+
             }
 
             return matrix;
