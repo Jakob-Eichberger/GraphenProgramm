@@ -71,7 +71,7 @@ namespace GrafenProgramm
                     matrixok++;
                 }
 
-                MessageBox.Show($"matrixok wert: {matrixok.ToString()}\nartikualtion:{artikualtion} -{abc.Count}\n zusammen{zusammenhaengend} - {b}");
+                //MessageBox.Show($"matrixok value (should be2): {matrixok.ToString()}\nartikualtion:{artikualtion} __ {abc.Count}\n zusammen{zusammenhaengend} __ {b}");
                 if (matrixok != 2)
                 {
                     generateMatrix(size, zusammenhaengend, artikualtion, enable);

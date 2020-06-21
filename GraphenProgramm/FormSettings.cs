@@ -17,15 +17,20 @@ namespace GrafenProgramm
         int size = 0;
         Boolean zusammenhangen;
         Boolean artikulationen;
+        Boolean enable;
 
         public FormSettings()
         {
             InitializeComponent();
 
 
+
             checkBox3.Checked = Convert.ToBoolean(Properties.Settings.Default["enable"]);
             checkBox2.Checked = Convert.ToBoolean(Properties.Settings.Default["zusammenhangen"]);
             checkBox1.Checked = Convert.ToBoolean(Properties.Settings.Default["artikulationen"]);
+
+
+
 
 
 
@@ -64,11 +69,17 @@ namespace GrafenProgramm
         }
         private void button1_Click(object sender, EventArgs e)
         {
+
+            enable = checkBox3.Checked;
+            zusammenhangen = checkBox2.Checked;
+            artikulationen = checkBox1.Checked;
+
+            size = Convert.ToInt32( numericUpDown1.Value);
             this.Close();
         }
-        public Boolean enabled
+        public Boolean Enable
         {
-            get { return checkBox3.Checked; }
+            get { return enable; }
         }
         private void checkifcheckbox3ischeckd()
         {
