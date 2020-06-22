@@ -80,7 +80,7 @@
             this.label1.BackColor = System.Drawing.SystemColors.Control;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label1.Location = new System.Drawing.Point(4, 0);
+            this.label1.Location = new System.Drawing.Point(5, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(87, 31);
             this.label1.TabIndex = 10;
@@ -247,7 +247,7 @@
             this.panel2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.panel2.Location = new System.Drawing.Point(15, 171);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(588, 351);
+            this.panel2.Size = new System.Drawing.Size(529, 351);
             this.panel2.TabIndex = 18;
             // 
             // openFile
@@ -312,7 +312,7 @@
             this.panel3.Controls.Add(this.label7);
             this.panel3.Location = new System.Drawing.Point(15, 104);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(588, 61);
+            this.panel3.Size = new System.Drawing.Size(529, 61);
             this.panel3.TabIndex = 22;
             // 
             // labBruck
@@ -368,7 +368,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(615, 534);
+            this.ClientSize = new System.Drawing.Size(552, 534);
             this.Controls.Add(this.generateBtn);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.labTheme);

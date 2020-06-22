@@ -543,7 +543,8 @@ namespace GrafenProgramm
                             schongesucht.Add(y);
                         }
                     }
-                    komponents.Add(kompo);
+                  
+                    komponents.Add(kompo.Remove(kompo.Length - 2, 2));
                 }
             }
             return komponents;
