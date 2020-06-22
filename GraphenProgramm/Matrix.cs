@@ -25,13 +25,17 @@ namespace GrafenProgramm
     public class MatrixClass
     {
         public int[,] matrix;
+
         int ammountNode = 0;
+
         public Boolean zusammenhaengend;
+
         public Boolean readOk = false;
 
         public MatrixClass()
         {
         }
+
         //used to get the full matrix;
         public int[,] Matrix
         {
@@ -66,7 +70,6 @@ namespace GrafenProgramm
                 Title = "Get csv file."
             };
             string inputFile = "";
-
             if (OpenFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 try
@@ -76,43 +79,30 @@ namespace GrafenProgramm
                     {
                         inputFile = sr.ReadToEnd();
                     }
-
                     readOk = true;
-
                 }
-
                 catch (System.UnauthorizedAccessException)
                 {
                     MessageBox.Show($"Acces to path '{OpenFileDialog1.FileName.ToString()}' was denied!");
-
                     readOk = false;
                 }
                 catch (System.IO.IOException)
                 {
                     MessageBox.Show($"'The process cannot access the file '{OpenFileDialog1.FileName.ToString()}' because it is being used by another process.");
-
                     readOk = false;
                 }
-
             }
-
             return inputFile;
         }
-
 
         //reads csv file  checks content for ammount of nodes - puts content into a string - calls checkifCsvFileIsOk Function
         public bool ReadCSV()
         {
-
-
             //reinitiates matrix and ammounNode with null/0 
             matrix = null;
             ammountNode = 0;
-
             String csvInput = FileSelector();
-
             checkIfCsvFileIsOk(csvInput);
-
             if (readOk)
             {
                 //Figure out how many nodes there are
@@ -120,7 +110,6 @@ namespace GrafenProgramm
                     ammountNode = csvInput[i].ToString() != "," ? ammountNode + 1 : ammountNode;
                 //initialize Array
                 matrix = new int[ammountNode, ammountNode];
-
                 try
                 {
                     //copy csv from csvInput into the matrix;
@@ -144,15 +133,11 @@ namespace GrafenProgramm
                     }
                     Zusammenhaengend(matrix, ammountNode + 1);
                 }
-
                 catch (IndexOutOfRangeException)
                 {
                     MessageBox.Show($"Index out of Bound exception while trying to copie csvInput into Matrix! -> {DateTime.Now.ToString()} - This Application will now end");
-
                     Application.Exit();
                 }
-
-
                 try
                 {
                     for (int y = 0; y < ammountNode && readOk; y++)
@@ -164,11 +149,8 @@ namespace GrafenProgramm
                                 readOk = false;
                                 throw new Exception("Matrix not diagonal");
                             }
-
                         }
                     }
-
-
                 }
                 catch (Exception e)
                 {
@@ -204,7 +186,6 @@ namespace GrafenProgramm
             {
                 MessageBox.Show(e.Message);
             }
-
         }
 
         //it works -> dont touch it
@@ -290,10 +271,6 @@ namespace GrafenProgramm
                     }
                     return c;
                 }
-                else
-                {
-
-                }
             }
             catch (IndexOutOfRangeException)
             {
@@ -304,12 +281,11 @@ namespace GrafenProgramm
                 MessageBox.Show("null pointer exception");
             }
             return null;
-
         }
+
         //if value x is found true is returned - Function does not check diagonal lines for x 
         public Boolean checkForValueNoneDiagonal(int[,] b, int checkValue, int excludeXY)
         {
-
             try
             {
                 for (int x = 0; x < ammountNode; x++)
@@ -322,7 +298,6 @@ namespace GrafenProgramm
                             {
                                 if (x != y && b[y, x] == checkValue)
                                 {
-                                  
                                     return true;
                                 }
                             }
@@ -416,7 +391,6 @@ namespace GrafenProgramm
                 eMatrix[y] = highestValue;
             }
             return eMatrix;
-
         }
 
         //return AD + Exzentrizitäten als string
@@ -424,9 +398,6 @@ namespace GrafenProgramm
         {
             int[,] tempaxa = CopieMatrix(matrix);
             int[] exz = exzentrizitaeten();
-
-
-
             string temp = "";
             for (int y = 0; y < ammountNode; y++)
             {
@@ -511,15 +482,16 @@ namespace GrafenProgramm
         public Boolean Zusammenhaengend(int[,] AD, int exclude)
         {
             int[,] i = Distanz(AD);
-            if (checkForValueNoneDiagonal(i, -1, exclude))
+            Boolean x = checkForValueNoneDiagonal(i, -1, exclude);
+            if (x)
             {
                 zusammenhaengend = false;
-                return true;
+                return false;
             }
             else
             {
                 zusammenhaengend = true;
-                return false;
+                return true;
             }
         }
 
@@ -606,7 +578,6 @@ namespace GrafenProgramm
         //bekommt AD übergeben
         public ArrayList artikulationen(int[,] art_matrix)
         {
-
             ArrayList artiku = new ArrayList();
             int kompanz = komponenten(WegMatrix(art_matrix)).Count;
 
@@ -615,7 +586,7 @@ namespace GrafenProgramm
                 int[,] temporary = CopieMatrix(art_matrix);
 
                 int temp = 0;
-                for (int y = x; y < ammountNode; y++)
+                for (int y = 0; y < ammountNode; y++)
                 {
                     //zähle alle Kanten bro x
                     if (temporary[y, x] == 1 && y != x)

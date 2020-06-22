@@ -30,6 +30,8 @@ namespace GrafenProgramm
         int radius;
         int durchmesser;
         string zentrum;
+        string AD;
+        string wegmatrix;
 
         public Form1()
         {
@@ -94,6 +96,9 @@ namespace GrafenProgramm
                 radius = matrix.radius();
                 durchmesser = matrix.durchmesser();
                 zentrum = matrix.zentrum();
+                AD = matrix.exzentrizitaetenString();
+                wegmatrix = matrix.Show(matrix.WegMatrix(matrix.Matrix));
+
 
                 if (!matrix.ZusammenHaengend)
                 {
@@ -188,12 +193,12 @@ namespace GrafenProgramm
 
         private void Graphen_Click(object sender, EventArgs e)
         {
-            label1.Text = matrix.exzentrizitaetenString();
+            label1.Text = AD;
         }
 
         private void wegBtn_Click(object sender, EventArgs e)
         {
-            label1.Text = matrix.Show(matrix.WegMatrix(matrix.Matrix)); ;
+            label1.Text = wegmatrix;
         }
 
 
@@ -395,24 +400,19 @@ namespace GrafenProgramm
         //open interface for generate settings
         private void generateBtn_Click(object sender, EventArgs e)
         {
-
             generateBtn.Text = "LOADING";
 
             FormSettings stn = new FormSettings();
             stn.ShowDialog();
 
             int size = stn.Size;
-            Boolean zusammenhangen = stn.Zusammenhangen;
-            Boolean artikulationen = stn.Artikulationen;
-            Boolean enable = stn.Enabled;
 
 
             GenerateMatrix temp = new GenerateMatrix();
-            int[,] temp1 = temp.generateMatrix(size, zusammenhangen, artikulationen, enable);
+            int[,] temp1 = temp.generateMatrix(size);
             berechneGraphen(false, temp1, size);
             Thread.Sleep(300);
             generateBtn.Text = "Generate";
-
         }
 
 

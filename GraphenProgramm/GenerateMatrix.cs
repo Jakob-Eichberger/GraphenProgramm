@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Drawing.Drawing2D;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -12,19 +13,14 @@ namespace GrafenProgramm
 {
     class GenerateMatrix
     {
-
-
         int[,] matrix;
+
         public GenerateMatrix()
         {
-
-
         }
 
-        public int[,] generateMatrix(int size, Boolean zusammenhaengend, Boolean artikualtion, Boolean enable)
+        public int[,] generateMatrix(int size)
         {
-            MatrixClass mtrx = new MatrixClass();
-
             matrix = new int[size, size];
             int result;
             Random r = new Random();
@@ -42,42 +38,10 @@ namespace GrafenProgramm
                         matrix[y, x] = result;
                         matrix[x, y] = result;
                     }
-
-                }
-
-            }
-
-            if (enable)
-            {
-                mtrx.AmmountNode = size;
-                mtrx.Matrix = matrix;
-                ArrayList abc = mtrx.artikulationen(matrix);
-                Boolean b = mtrx.zusammenhaengend;
-                int matrixok = 0;
-                if (artikualtion && abc.Count > 0)
-                {
-                    matrixok++;
-                }
-                if (!artikualtion && abc.Count == 0)
-                {
-                    matrixok++;
-                }
-                if (zusammenhaengend && b)
-                {
-                    matrixok++;
-                }
-                if (!zusammenhaengend && !b)
-                {
-                    matrixok++;
-                }
-
-                //MessageBox.Show($"matrixok value (should be2): {matrixok.ToString()}\nartikualtion:{artikualtion} __ {abc.Count}\n zusammen{zusammenhaengend} __ {b}");
-                if (matrixok != 2)
-                {
-                    generateMatrix(size, zusammenhaengend, artikualtion, enable);
                 }
             }
             return matrix;
         }
     }
 }
+
