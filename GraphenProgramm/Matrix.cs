@@ -76,7 +76,7 @@ namespace GrafenProgramm
                     {
                         inputFile = sr.ReadToEnd();
                     }
-                    
+
                     readOk = true;
 
                 }
@@ -155,16 +155,16 @@ namespace GrafenProgramm
 
                 try
                 {
-                    for (int y = 0;y<ammountNode && readOk;y++)
+                    for (int y = 0; y < ammountNode && readOk; y++)
                     {
-                        for (int x = y;x<ammountNode && readOk;x++)
+                        for (int x = y; x < ammountNode && readOk; x++)
                         {
-                            if (matrix[y,x]!=matrix[x,y])
+                            if (matrix[y, x] != matrix[x, y])
                             {
                                 readOk = false;
                                 throw new Exception("Matrix not diagonal");
                             }
-                           
+
                         }
                     }
 
@@ -309,7 +309,7 @@ namespace GrafenProgramm
         //if value x is found true is returned - Function does not check diagonal lines for x 
         public Boolean checkForValueNoneDiagonal(int[,] b, int checkValue, int excludeXY)
         {
-            Boolean valueFound = false;
+
             try
             {
                 for (int x = 0; x < ammountNode; x++)
@@ -321,7 +321,10 @@ namespace GrafenProgramm
                             if (y != excludeXY)
                             {
                                 if (x != y && b[y, x] == checkValue)
-                                    valueFound = true;
+                                {
+                                  
+                                    return true;
+                                }
                             }
                         }
                     }
@@ -331,7 +334,7 @@ namespace GrafenProgramm
             {
                 MessageBox.Show("Array is not same as default");
             }
-            return valueFound;
+            return false;
         }
 
         //replace a Value that is not on the diagonal line
@@ -388,8 +391,16 @@ namespace GrafenProgramm
         //liefert 1d array zurück in der länge von ammountNode ... und jeder Eintrag ist == zu jeder y Koordinate
         public int[] exzentrizitaeten()
         {
-            int[,] dMatrix = Distanz(matrix);
             int[] eMatrix = new int[ammountNode];
+            if (!zusammenhaengend)
+            {
+                for (int i = 0; i < ammountNode; i++)
+                {
+                    eMatrix[i] = -1;
+                }
+                return eMatrix;
+            }
+            int[,] dMatrix = Distanz(matrix);
             int highestValue = 0;
 
             for (int y = 0; y < ammountNode; y++)
@@ -413,15 +424,17 @@ namespace GrafenProgramm
         {
             int[,] tempaxa = CopieMatrix(matrix);
             int[] exz = exzentrizitaeten();
-            
+
+
+
             string temp = "";
-            for (int y = 0; y < ammountNode ; y++)
+            for (int y = 0; y < ammountNode; y++)
             {
 
                 temp += "  ";
-                for (int x = 0; x <ammountNode; x++)
+                for (int x = 0; x < ammountNode; x++)
                 {
-                    temp += $"{tempaxa[y,x]}    ";
+                    temp += $"{tempaxa[y, x]}    ";
                 }
                 temp += $"|  {exz[y]}\n";
             }
@@ -494,7 +507,7 @@ namespace GrafenProgramm
             }
         }
 
-        //bekommt AD übergeben // exclude: x/y achsen die  bei der kontrolle ausgelassen werden sollen (wenn ausgelassen dann ammountNode+1)
+        //bekommt AD übergeben // exclude: x/y achsen die  bei der kontrolle ausgelassen werden sollen (wenn auslassen ausgelassen werden soll dann ammountNode+1)
         public Boolean Zusammenhaengend(int[,] AD, int exclude)
         {
             int[,] i = Distanz(AD);
@@ -595,9 +608,7 @@ namespace GrafenProgramm
         {
 
             ArrayList artiku = new ArrayList();
-            ArrayList komp = komponenten(WegMatrix(art_matrix));
-            int kompanz = komp.Count;
-
+            int kompanz = komponenten(WegMatrix(art_matrix)).Count;
 
             for (int x = 0; x < ammountNode; x++)
             {
@@ -607,13 +618,13 @@ namespace GrafenProgramm
                 for (int y = x; y < ammountNode; y++)
                 {
                     //zähle alle Kanten bro x
-                    if (temporary[y, x] == 1 || y == x)
+                    if (temporary[y, x] == 1 && y != x)
                     {
                         temp++;
                     }
                 }
                 //artikulations dont have the  value 0 or 1
-                if (temp > 2)
+                if (temp > 1)
                 {
                     for (int n = 0; n < ammountNode; n++)
                     {
@@ -621,7 +632,7 @@ namespace GrafenProgramm
                         temporary[n, x] = 0;
                     }
                     Boolean zus = Zusammenhaengend(temporary, x);
-                    if (zus)
+                    if (!zus)
                     {
                         ArrayList i = komponenten(WegMatrix(temporary));
                         //i.Count-1 da wenn ich einen Knoten "lösche" er als eigene Kompoenten erkannt wirt

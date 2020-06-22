@@ -76,13 +76,8 @@ namespace GrafenProgramm
                 {
                     generateMatrix(size, zusammenhaengend, artikualtion, enable);
                 }
-
             }
-
             return matrix;
         }
-
-
-
     }
 }

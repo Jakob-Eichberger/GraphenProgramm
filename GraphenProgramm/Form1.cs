@@ -74,15 +74,15 @@ namespace GrafenProgramm
 
             //figure out how big the matrix is and  ajust label1's font
             int fontsieze;
-          
-                
-                if (matrix.AmmountNode < 10)
-                {
-                    fontsieze = 18;
+
+
+            if (matrix.AmmountNode < 10)
+            {
+                fontsieze = 18;
             }
             else
             {
-                fontsieze = 200 / matrix.AmmountNode > 0 ? matrix.AmmountNode : 10;
+                fontsieze = 200 / matrix.AmmountNode ;
             }
 
             label1.Font = new Font("Microsoft Sans Serif", fontsieze);
@@ -408,16 +408,13 @@ namespace GrafenProgramm
 
 
             GenerateMatrix temp = new GenerateMatrix();
-            int[,] temp1 = temp.generateMatrix(size, zusammenhangen, artikulationen,enable);
+            int[,] temp1 = temp.generateMatrix(size, zusammenhangen, artikulationen, enable);
             berechneGraphen(false, temp1, size);
             Thread.Sleep(300);
             generateBtn.Text = "Generate";
 
         }
-        private void generate()
-        {
 
-        }
 
 
     }
