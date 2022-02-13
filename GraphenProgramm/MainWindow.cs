@@ -24,7 +24,7 @@ namespace GrafenProgramm
     public partial class MainWindow : Form
 
     {
-        MatrixClass matrix = new MatrixClass();
+        Graph matrix = new Graph();
         int[,] distanz;
 
         int radius;
@@ -93,10 +93,10 @@ namespace GrafenProgramm
             if (matrix.readOk && matrix.Matrix != null)
             {
                 distanz = matrix.Distanz(matrix.Matrix);
-                radius = matrix.radius();
-                durchmesser = matrix.durchmesser();
-                zentrum = matrix.zentrum();
-                AD = matrix.exzentrizitaetenString();
+                radius = matrix.Radius();
+                durchmesser = matrix.Durchmesser();
+                zentrum = matrix.Zentrum();
+                AD = matrix.ExzentrizitaetenString();
                 wegmatrix = matrix.Show(matrix.WegMatrix(matrix.Matrix));
 
 
@@ -118,7 +118,7 @@ namespace GrafenProgramm
                 }
 
                 //Brücken am Label anzeigen
-                ArrayList temp = matrix.brucken(matrix.Matrix);
+                ArrayList temp = matrix.Bruecken(matrix.Matrix);
                 string n = "";
                 if (temp.Count != 0)
                 {
@@ -134,7 +134,7 @@ namespace GrafenProgramm
                 labBruck.Text = n;
 
                 //Komponenten am Label anzeigen
-                ArrayList x = matrix.komponenten(matrix.WegMatrix(matrix.Matrix));
+                ArrayList x = matrix.Komponenten(matrix.WegMatrix(matrix.Matrix));
 
                 string m = "";
                 for (int i = 0; i < x.Count; i++)
@@ -144,7 +144,7 @@ namespace GrafenProgramm
                 labKompo.Text = m;
 
                 //Artikulationen am Label anzeigen
-                ArrayList art = matrix.artikulationen(matrix.Matrix);
+                ArrayList art = matrix.Artikulationen(matrix.Matrix);
                 string oo = "";
                 if (art.Count != 0)
                 {
@@ -404,8 +404,7 @@ namespace GrafenProgramm
             Settings stn = new Settings();
             stn.ShowDialog();
             int size = stn.Size;
-            Matrix temp = new Matrix();
-            int[,] temp1 = temp.Generat(size);
+            int[,] temp1 = Graph.Generat(size);
             BerechneGraphen(false, temp1, size);
             Thread.Sleep(300);
             generateBtn.Text = "Generate";
