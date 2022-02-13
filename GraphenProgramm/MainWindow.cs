@@ -24,15 +24,13 @@ namespace GrafenProgramm
     public partial class MainWindow : Form
 
     {
-        Graph matrix = new Graph();
-        int[,] distanz;
-
-        int radius;
-        int durchmesser;
-        string zentrum;
         string AD;
+        int[,] distanz;
+        int durchmesser;
+        Graph matrix = new Graph();
+        int radius;
         string wegmatrix;
-
+        string zentrum;
         public MainWindow()
         {
             InitializeComponent();
@@ -58,7 +56,7 @@ namespace GrafenProgramm
 
         }
 
-        private Boolean BerechneGraphen(Boolean readfile, int[,] newmatrix, int size)
+        private bool BerechneGraphen(bool readfile, int[,] newmatrix, int size)
         {
             //either read from file or geneatte a new one;
             label1.Text = "";
@@ -76,7 +74,6 @@ namespace GrafenProgramm
 
             //figure out how big the matrix is and  ajust label1's font
             int fontsieze;
-
 
             if (matrix.AmmountNode < 10)
             {
@@ -171,40 +168,6 @@ namespace GrafenProgramm
             return true;
         }
 
-        private void OpenFile_Click(object sender, EventArgs e)
-        {
-
-            BerechneGraphen(true, null, 0);
-
-
-        }
-
-        private void DistanzenBtn_Click(object sender, EventArgs e)
-        {
-            label1.Text = matrix.Show(distanz);
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Graphen_Click(object sender, EventArgs e)
-        {
-            label1.Text = AD;
-        }
-
-        private void WegBtn_Click(object sender, EventArgs e)
-        {
-            label1.Text = wegmatrix;
-        }
-
-        private void Label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void BrightTheme()
         {
             this.distanzenBtn.BackColor = System.Drawing.SystemColors.Control;
@@ -289,6 +252,20 @@ namespace GrafenProgramm
             this.generateBtn.ForeColor = System.Drawing.SystemColors.ControlText;
 
 
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            DarkTheme();
+            Properties.Settings.Default["theme"] = 1.ToString();
+            Properties.Settings.Default.Save();
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            BrightTheme();
+            Properties.Settings.Default["theme"] = 0.ToString();
+            Properties.Settings.Default.Save();
         }
 
         private void DarkTheme()
@@ -377,21 +354,9 @@ namespace GrafenProgramm
 
         }
 
-        private void Button1_Click(object sender, EventArgs e)
-        {
-            DarkTheme();
-            Properties.Settings.Default["theme"] = 1.ToString();
-            Properties.Settings.Default.Save();
-        }
+        private void DistanzenBtn_Click(object sender, EventArgs e) => label1.Text = matrix.Show(distanz);
 
-        private void Button2_Click(object sender, EventArgs e)
-        {
-            BrightTheme();
-            Properties.Settings.Default["theme"] = 0.ToString();
-            Properties.Settings.Default.Save();
-        }
-
-        private void Label8_Click(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
 
         }
@@ -408,6 +373,28 @@ namespace GrafenProgramm
             BerechneGraphen(false, temp1, size);
             Thread.Sleep(300);
             generateBtn.Text = "Generate";
+        }
+
+        private void Graphen_Click(object sender, EventArgs e)
+        {
+            label1.Text = AD;
+        }
+
+        private void Label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void OpenFile_Click(object sender, EventArgs e) => BerechneGraphen(true, null, 0);
+
+        private void WegBtn_Click(object sender, EventArgs e)
+        {
+            label1.Text = wegmatrix;
         }
     }
 }
