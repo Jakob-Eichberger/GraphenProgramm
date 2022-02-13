@@ -1,0 +1,1 @@
+matrix durchlaufen -> schauen ob knotengrad >2 -> knoten entfernen (xy,yx) -> zusammenhängend:nein-> komponten++(>orig)x
