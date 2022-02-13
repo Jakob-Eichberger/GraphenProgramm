@@ -1,0 +1,1 @@
+GraphenProgramm or Graph Program was a program that was developed during the first year of my education at the higher technical college [HTL Spengergasse](https://www.spengergasse.at/). The task was to develop a program that could perform operations on a graph. In the program the graph is represente as a adjacency matrix.
