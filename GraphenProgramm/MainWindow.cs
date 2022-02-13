@@ -401,7 +401,7 @@ namespace GrafenProgramm
         {
             generateBtn.Text = "LOADING";
 
-            FormSettings stn = new FormSettings();
+            Settings stn = new Settings();
             stn.ShowDialog();
             int size = stn.Size;
             Matrix temp = new Matrix();

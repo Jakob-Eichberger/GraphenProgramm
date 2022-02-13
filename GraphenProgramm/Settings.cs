@@ -12,11 +12,11 @@ using System.Windows.Forms;
 
 namespace GrafenProgramm
 {
-    public partial class FormSettings : Form
+    public partial class Settings : Form
     {
         int size = 0;
 
-        public FormSettings()
+        public Settings()
         {
             InitializeComponent();
             numericUpDown1.Value = Convert.ToDecimal(Properties.Settings.Default["size"]);
